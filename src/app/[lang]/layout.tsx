@@ -36,13 +36,13 @@ export default function RootLayout({
         <Providers>
           <ThemeRegistry lang={params.lang}>
             <Toaster />
-            {!isDashboard ||
+            {/* {!isDashboard ||
               (!isAuth && (
                 <>
                   <Topbar />
                   <Box height={80} />
                 </>
-              ))}
+              ))} */}
             {children}
           </ThemeRegistry>
         </Providers>
