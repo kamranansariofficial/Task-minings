@@ -92,7 +92,7 @@ const typography: any = {
   },
   body2: {
     lineHeight: 22 / 14,
-    fontSize: pxToRem(12),
+    fontSize: pxToRem(14),
     fontFamily: openSans.style.fontFamily,
   },
   caption: {
@@ -102,9 +102,9 @@ const typography: any = {
   overline: {
     fontWeight: 700,
     lineHeight: 1.5,
-    fontSize: pxToRem(12),
-    letterSpacing: 1.1,
-    // textTransform: 'uppercase',
+    fontSize: pxToRem(14),
+    // letterSpacing: 1.1,
+    textTransform: 'capitalize',
   },
   button: {
     fontWeight: 700,

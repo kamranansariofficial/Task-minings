@@ -2,7 +2,7 @@
 import React from 'react';
 import { Paper, Grid } from '@mui/material';
 import AuthCard from '@/components/cards/authCard';
-import RegisterAuth from '@/components/_main/auth/register';
+import LoginAuth from '@/components/_main/auth/loginAuth';
 
 export default function Page() {
   return (
@@ -24,7 +24,7 @@ export default function Page() {
           item
           xs={12}
           md={8}>
-          <RegisterAuth />
+          <LoginAuth />
         </Grid>
       </Grid>
     </Paper>
