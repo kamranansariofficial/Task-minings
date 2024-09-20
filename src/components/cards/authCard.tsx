@@ -30,6 +30,7 @@ export default function AuthCard() {
           src={BgHEr}
           alt='dd'
           fill
+          placeholder='blur'
           objectFit='cover'
         />
       </Box>
@@ -52,6 +53,7 @@ export default function AuthCard() {
             height={62}
             layout='fixed'
             objectFit='cover'
+            sizes={'100vh'}
           />
           <Stack>
             <Typography
