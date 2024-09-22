@@ -1,0 +1,52 @@
+'use client';
+import React from 'react';
+import { Stack, Typography, Toolbar, Box } from '@mui/material';
+import Link from 'next/link';
+import Image from 'next/image';
+import LightLogo from '../../../../public/static/logo-light.png';
+import DarkLogo from '../../../../public/static/logo-dark.png';
+import { useSelector } from 'react-redux';
+import { darkMode } from '@/lib/redux';
+import ChangePasswordForm from '@/components/forms/changePassword';
+
+export default function ChangePasswordAuth() {
+  const isDarkMode = useSelector(darkMode);
+
+  return (
+    <Stack
+      direction='column'
+      justifyContent='space-between'
+      alignItems='center'
+      spacing={3}
+      sx={{
+        height: '100%',
+      }}>
+      <Toolbar
+        sx={{
+          py: 2,
+        }}>
+        <Box
+          component={Link}
+          href='/'
+          sx={{
+            position: 'relative',
+            height: 74,
+            width: 304,
+          }}>
+          <Image
+            src={isDarkMode ? DarkLogo : LightLogo}
+            alt='logo'
+            priority
+            fill
+            objectFit='contain'
+          />
+        </Box>
+      </Toolbar>
+      <ChangePasswordForm />
+      <Typography
+        variant='body2'
+        color='text.secondary'
+        textAlign='center'></Typography>
+    </Stack>
+  );
+}

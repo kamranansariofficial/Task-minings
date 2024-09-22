@@ -6,58 +6,55 @@ import * as Yup from 'yup';
 import { useSearchParams } from 'next/navigation';
 import { useRouter } from 'next-nprogress-bar';
 // formik
-import { useFormik, Form, FormikProvider } from 'formik';
+import { useFormik, FormikProvider, Form } from 'formik';
 // toast
 import { toast } from 'react-hot-toast';
 // react component
 import OtpInput from 'react-otp-input';
 // mui
-import { Box, Stack, TextField, Typography, Button } from '@mui/material';
+import { Box, Stack, Typography, Button, useTheme } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 // icons
 import { IoIosArrowRoundBack } from 'react-icons/io';
 
+// Define Form Values and Yup Schema
 interface FormValues {
-  email: string;
+  otp: string;
 }
+
+const validationSchema = Yup.object({
+  otp: Yup.string()
+    .length(4, 'OTP must be 4 digits')
+    .required('OTP is required'),
+});
 
 export default function OTPForm() {
   const router = useRouter();
   const searchParam = useSearchParams();
   const redirect = searchParam.get('redirect');
-  // const dispatch = useDispatch();
-  const [loading, setloading] = useState(false);
-  const [otp, setOtp] = useState('');
-  const [complete, setComplete] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const theme = useTheme();
 
-  const onOtpChange = (value: any) => {
-    setOtp(value);
-    setComplete(false); // Reset complete state
-  };
-  const RegisterSchema = Yup.object().shape({
-    email: Yup.string()
-      .email('Enter valid email')
-      .required('Email is required'),
-  });
+  // Formik setup
   const formik = useFormik<FormValues>({
     initialValues: {
-      email: '',
+      otp: '',
     },
-    validationSchema: RegisterSchema,
-    onSubmit: async (values: any) => {
-      setloading(true);
+    validationSchema,
+    onSubmit: (values) => {
+      setLoading(true);
+      // Simulate async request
       setTimeout(() => {
-        setloading(false);
-        toast.success('OTP is Verifed!');
-        router.push(
-          redirect
-            ? `/auth/verify-otp?redirect=${redirect}`
-            : `/auth/verify-otp`
-        );
-      }, 5000); // 5 seconds delay
+        setLoading(false);
+        toast.success('OTP Verified Successfully');
+        // Perform redirection or other logic
+        router.push(redirect || '/auth/change-password');
+      }, 2000);
     },
   });
-  const { errors, touched, handleSubmit, values, getFieldProps } = formik;
+
+  const { values, errors, touched, handleSubmit, setFieldValue } = formik;
+
   return (
     <FormikProvider value={formik}>
       <Form
@@ -87,8 +84,7 @@ export default function OTPForm() {
             <Typography
               variant='body2'
               color='text.secondary'>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt .
+              Enter the OTP sent to your registered email.
             </Typography>
           </Stack>
           <Box
@@ -103,28 +99,44 @@ export default function OTPForm() {
                 gap: 8,
                 width: '100%', // Ensure the container is full width
               }}
-              value={otp}
-              onChange={onOtpChange}
+              value={values.otp} // Connect Formik's value
+              onChange={(otp) => setFieldValue('otp', otp)} // Update Formik state
               numInputs={4}
               placeholder='-' // This sets the placeholder for the input
               renderSeparator={<span> </span>}
               renderInput={(props: any) => (
-                <TextField
-                  fullWidth
-                  placeholder='-'
+                <input
                   {...props}
+                  placeholder={`-`} // Set placeholder for each input as a dot or any character
+                  style={{
+                    width: '100%',
+                    padding: '10px',
+                    fontSize: '20px',
+                    minHeight: 63,
+                    textAlign: 'center',
+                    borderRadius: 8,
+                    border: '1px solid' + theme.palette.divider,
+                  }}
                 />
               )}
               shouldAutoFocus
             />
+            {touched.otp && errors.otp && (
+              <Typography
+                color='error'
+                variant='caption'>
+                {errors.otp}
+              </Typography>
+            )}
           </Box>
           <LoadingButton
             fullWidth
             type='submit'
             variant='contained'
             loading={loading}>
-            Send OTP
+            Submit
           </LoadingButton>
+          <Button disabled> Resend</Button>
         </Stack>
       </Form>
     </FormikProvider>

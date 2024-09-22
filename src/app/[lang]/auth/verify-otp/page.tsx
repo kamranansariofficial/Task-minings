@@ -1,15 +1,16 @@
 'use client';
 import React from 'react';
-import { Paper, Grid } from '@mui/material';
+import { Box, Grid } from '@mui/material';
 import AuthCard from '@/components/cards/authCard';
 import OTPAuth from '@/components/_main/auth/otpAuth';
 
 export default function Page() {
   return (
-    <Paper
+    <Box
       sx={{
         p: 3.2,
         borderRadius: 0,
+        bgcolor: (theme) => theme.palette.background.paper,
       }}>
       <Grid
         container
@@ -27,6 +28,6 @@ export default function Page() {
           <OTPAuth />
         </Grid>
       </Grid>
-    </Paper>
+    </Box>
   );
 }

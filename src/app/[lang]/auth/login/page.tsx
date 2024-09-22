@@ -1,15 +1,16 @@
 'use client';
 import React from 'react';
-import { Paper, Grid } from '@mui/material';
+import { Paper, Grid, Box } from '@mui/material';
 import AuthCard from '@/components/cards/authCard';
 import LoginAuth from '@/components/_main/auth/loginAuth';
 
 export default function Page() {
   return (
-    <Paper
+    <Box
       sx={{
         p: 3.2,
         borderRadius: 0,
+        bgcolor: (theme) => theme.palette.background.paper,
       }}>
       <Grid
         container
@@ -27,6 +28,6 @@ export default function Page() {
           <LoginAuth />
         </Grid>
       </Grid>
-    </Paper>
+    </Box>
   );
 }

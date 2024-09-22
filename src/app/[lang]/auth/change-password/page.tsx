@@ -1,8 +1,8 @@
 'use client';
 import React from 'react';
-import { Box, Grid } from '@mui/material';
+import { Paper, Grid, Box } from '@mui/material';
 import AuthCard from '@/components/cards/authCard';
-import RegisterAuth from '@/components/_main/auth/register';
+import ChangePasswordAuth from '@/components/_main/auth/changePassword';
 
 export default function Page() {
   return (
@@ -25,7 +25,7 @@ export default function Page() {
           item
           xs={12}
           md={8}>
-          <RegisterAuth />
+          <ChangePasswordAuth />
         </Grid>
       </Grid>
     </Box>
