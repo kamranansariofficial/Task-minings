@@ -11,9 +11,10 @@ export default function AuthCard() {
     <Box
       sx={{
         display: { xs: 'none', md: 'flex' },
-        position: 'relative',
+        position: 'sticky',
+        top: 26,
         overflow: 'hidden',
-        height: 'calc(100vh - 50px)',
+        height: 'calc(100vh - 60px)',
         width: '100%',
         borderRadius: 7,
         bgcolor: '#EFEFEF',

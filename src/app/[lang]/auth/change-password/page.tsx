@@ -9,7 +9,6 @@ export default function Page() {
     <Box
       sx={{
         p: 3.2,
-        borderRadius: 0,
         bgcolor: (theme) => theme.palette.background.paper,
       }}>
       <Grid

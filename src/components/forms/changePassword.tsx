@@ -42,7 +42,7 @@ export default function ChangePasswordForm() {
   const [loading, setloading] = useState(false);
   const RegisterSchema = Yup.object().shape({
     password: Yup.string().required('Password is required'),
-    newPassword: Yup.string().required('New Password is required'),
+    newPassword: Yup.string().required('Confirm Password is required'),
   });
   const formik = useFormik<FormValues>({
     initialValues: {
@@ -81,12 +81,13 @@ export default function ChangePasswordForm() {
               color='inherit'
               sx={{
                 fontWeight: 400,
+                display: { xs: 'none', md: 'flex' },
               }}
               startIcon={<IoIosArrowRoundBack size={24} />}>
               Back
             </Button>
           </Box>
-          <Stack>
+          <Stack textAlign={{ xs: 'center', md: 'left' }}>
             <Typography variant='h3'>Create new password</Typography>
             <Typography
               variant='body2'

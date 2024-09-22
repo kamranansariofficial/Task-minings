@@ -68,12 +68,13 @@ export default function ForgetPasswordForm() {
               color='inherit'
               sx={{
                 fontWeight: 400,
+                display: { xs: 'none', md: 'flex' },
               }}
               startIcon={<IoIosArrowRoundBack size={24} />}>
               Back
             </Button>
           </Box>
-          <Stack>
+          <Stack textAlign={{ xs: 'center', md: 'left' }}>
             <Typography variant='h3'>Forgot password</Typography>
             <Typography
               variant='body2'
@@ -82,7 +83,6 @@ export default function ForgetPasswordForm() {
               eiusmod tempor incididunt .
             </Typography>
           </Stack>
-
           <Stack
             gap={0.5}
             width={1}>

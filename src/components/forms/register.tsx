@@ -25,6 +25,8 @@ import {
   FormControlLabel,
   Checkbox,
   Divider,
+  useTheme,
+  useMediaQuery,
 } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 // icons
@@ -42,6 +44,8 @@ interface FormValues {
 
 export default function RegisterForm() {
   const router = useRouter();
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const searchParam = useSearchParams();
   const redirect = searchParam.get('redirect');
   // const dispatch = useDispatch();
@@ -77,7 +81,7 @@ export default function RegisterForm() {
         setloading(false);
         toast.success('Registration successful!');
         router.push(
-          redirect ? `/auth/verify-otp?redirect=${redirect}` : `/auth/login`
+          redirect ? `/auth/verify-otp?redirect=${redirect}` : `/dashboard`
         );
       }, 5000); // 5 seconds delay
     },
@@ -111,8 +115,9 @@ export default function RegisterForm() {
         <Stack spacing={2}>
           <Typography
             variant='h3'
+            textAlign={{ xs: 'center', md: 'left' }}
             pb={2}>
-            Sign up To Task Minings
+            {isMobile ? 'Sign up' : 'Sign up To Task Minings'}
           </Typography>
           <Stack
             direction={{ xs: 'column', sm: 'row' }}
@@ -232,6 +237,7 @@ export default function RegisterForm() {
             label={
               <Typography
                 variant='body2'
+                fontSize={{ xs: 10, md: 14 }}
                 color='text.secondary'
                 sx={{
                   a: {

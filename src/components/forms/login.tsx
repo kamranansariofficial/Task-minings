@@ -81,8 +81,9 @@ export default function LoginForm() {
         <Stack spacing={2}>
           <Typography
             variant='h3'
+            textAlign={{ xs: 'center', md: 'left' }}
             pb={2}>
-            Login To Task Minings
+            Login
           </Typography>
           <Stack
             gap={0.5}

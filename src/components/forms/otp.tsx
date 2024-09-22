@@ -12,7 +12,14 @@ import { toast } from 'react-hot-toast';
 // react component
 import OtpInput from 'react-otp-input';
 // mui
-import { Box, Stack, Typography, Button, useTheme } from '@mui/material';
+import {
+  Box,
+  Stack,
+  Typography,
+  Button,
+  useTheme,
+  useMediaQuery,
+} from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 // icons
 import { IoIosArrowRoundBack } from 'react-icons/io';
@@ -30,10 +37,11 @@ const validationSchema = Yup.object({
 
 export default function OTPForm() {
   const router = useRouter();
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const searchParam = useSearchParams();
   const redirect = searchParam.get('redirect');
   const [loading, setLoading] = useState(false);
-  const theme = useTheme();
 
   // Formik setup
   const formik = useFormik<FormValues>({
@@ -74,12 +82,13 @@ export default function OTPForm() {
               color='inherit'
               sx={{
                 fontWeight: 400,
+                display: { xs: 'none', md: 'flex' },
               }}
               startIcon={<IoIosArrowRoundBack size={24} />}>
               Back
             </Button>
           </Box>
-          <Stack>
+          <Stack textAlign={{ xs: 'center', md: 'left' }}>
             <Typography variant='h3'>OTP</Typography>
             <Typography
               variant='body2'
@@ -112,7 +121,7 @@ export default function OTPForm() {
                     width: '100%',
                     padding: '10px',
                     fontSize: '20px',
-                    minHeight: 63,
+                    minHeight: isMobile ? 48 : 63,
                     textAlign: 'center',
                     borderRadius: 8,
                     border: '1px solid' + theme.palette.divider,
