@@ -1,10 +1,4 @@
 'use client';
-import { Montserrat } from 'next/font/google';
-const montserrat = Montserrat({
-  weight: ['300', '400', '500', '600', '700', '800', '900'],
-  subsets: ['latin'],
-  display: 'swap',
-});
 
 // mui
 import { GlobalStyles as GlobalThemeStyles } from '@mui/material';
@@ -34,9 +28,6 @@ export default function GlobalStyles() {
         '#__next': {
           width: '100%',
           height: '100%',
-        },
-        '.MuiTableCell-root': {
-          fontFamily: montserrat.style.fontFamily + '!important',
         },
         input: {
           '&[type=number]': {
