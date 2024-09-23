@@ -80,7 +80,6 @@ export default function DashboardSidebar({ ...props }) {
   const dispatch = useDispatch();
   const [active, setActive] = React.useState('');
   const [initial, setInitial] = React.useState(false);
-
   React.useEffect(() => {
     setActive(pathname);
     setInitial(true);

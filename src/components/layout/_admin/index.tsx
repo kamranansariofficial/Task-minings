@@ -53,7 +53,8 @@ export default function DashboardLayout(props: Props) {
         component='main'
         sx={{
           flexGrow: 1,
-          p: 4.5,
+          p: { xs: 2, md: 4.5 },
+          pt: 0 + '!important',
           width: { sm: `calc(100% - ${drawerWidth}px)` },
         }}>
         <Toolbar />
