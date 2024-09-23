@@ -49,7 +49,7 @@ export default function LocaleSwitcher() {
   };
 
   return (
-    <FormControl fullWidth>
+    <FormControl>
       <Select
         size='small'
         labelId='demo-simple-select-label'

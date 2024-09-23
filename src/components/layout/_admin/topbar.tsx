@@ -16,7 +16,7 @@ import { FaBell } from 'react-icons/fa';
 
 // icons
 import { BiMenuAltLeft } from 'react-icons/bi';
-import { Box, Card, Stack } from '@mui/material';
+import { Box, Card, Stack, useMediaQuery, useTheme } from '@mui/material';
 import LocaleSwitcher from '@/components/locale-switcher';
 import UserPopover from '@/components/popover/userPopover';
 
@@ -24,6 +24,8 @@ export default function DashboardAppbar({ ...props }) {
   const { drawerWidth, handleDrawerToggle } = props;
   const isDarkMode = useSelector(darkMode);
   const dispatch = useDispatch();
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   return (
     <AppBar
       position='fixed'
@@ -61,16 +63,17 @@ export default function DashboardAppbar({ ...props }) {
             direction='row'
             alignItems='center'
             spacing={{ xs: 1, md: 4 }}>
-            {/* <IconButton
+            <IconButton
               sx={{
                 height: 41,
                 width: 41,
                 borderRadius: '13px !important',
                 bgcolor: isDarkMode ? '#4E4E4E' : '#DCDFE6',
+                display: { xs: 'none', md: 'flex' },
               }}
               onClick={() => dispatch(settingSlice.actions.changeMode())}>
               {isDarkMode ? <LightMode /> : <DarkMode />}
-            </IconButton> */}
+            </IconButton>
             <Stack
               direction='row'
               alignItems='center'
@@ -98,10 +101,15 @@ export default function DashboardAppbar({ ...props }) {
                 13,583{' ' + ' '}
               </Typography>
               <IconButton size='small'>
-                <MdOutlineVisibilityOff size={18} />
+                <MdOutlineVisibilityOff size={isMobile ? 16 : 24} />
               </IconButton>
             </Stack>
-            {/* <LocaleSwitcher /> */}
+            <Box
+              sx={{
+                display: { xs: 'none', md: 'block' },
+              }}>
+              <LocaleSwitcher />
+            </Box>
             <IconButton
               size='small'
               color='inherit'

@@ -13,6 +13,7 @@ import {
   Toolbar,
   Typography,
   Button,
+  IconButton,
 } from '@mui/material';
 // mui icons
 import DashboardIcon from '../../../../public/static/icons/dashboard.svg';
@@ -25,12 +26,17 @@ import SupportIcon from '../../../../public/static/icons/customer-support.svg';
 import SettingIcon from '../../../../public/static/icons/ai-setting.svg';
 import LightLogo from '../../../../public/static/logo-light.png';
 import DarkLogo from '../../../../public/static/logo-dark.png';
+import DarkMode from '../../../../public/static/icons/dark_mode.svg';
+import LightMode from '../../../../public/static/icons/wb_sunny.svg';
+import { MdOutlineClear } from 'react-icons/md';
+
 import Image from 'next/image';
 import Link from 'next/link';
 import Scrollbar from '@/components/Scrollbar';
 import { usePathname, useRouter } from 'next/navigation';
-import { darkMode } from '@/lib/redux';
-import { useSelector } from 'react-redux';
+import { darkMode, settingSlice } from '@/lib/redux';
+import { useDispatch, useSelector } from 'react-redux';
+import LocaleSwitcher from '@/components/locale-switcher';
 
 const navData = [
   {
@@ -71,6 +77,7 @@ export default function DashboardSidebar({ ...props }) {
   const router = useRouter();
   const pathname = usePathname();
   const isDarkMode = useSelector(darkMode);
+  const dispatch = useDispatch();
   const [active, setActive] = React.useState('');
   const [initial, setInitial] = React.useState(false);
 
@@ -81,13 +88,39 @@ export default function DashboardSidebar({ ...props }) {
 
   const drawer = (
     <Box
-      py={2}
+      py={{ xs: 1, md: 2 }}
       sx={{
         height: '100%',
         display: 'flex',
         flexDirection: 'column',
         bgcolor: (theme) => theme.palette.background.paper,
       }}>
+      <Stack
+        direction='row'
+        justifyContent='space-between'
+        alignItems='center'
+        sx={{
+          ml: 0.5,
+          mb: 2,
+          display: { xs: 'flex', md: 'none' },
+        }}>
+        <IconButton
+          sx={{
+            height: 40,
+            width: 40,
+            borderRadius: '13px !important',
+            bgcolor: isDarkMode ? '#4E4E4E' : '#DCDFE6',
+          }}
+          onClick={() => dispatch(settingSlice.actions.changeMode())}>
+          {isDarkMode ? <LightMode /> : <DarkMode />}
+        </IconButton>
+        <LocaleSwitcher />
+        <IconButton
+          color='inherit'
+          onClick={handleDrawerClose}>
+          <MdOutlineClear />
+        </IconButton>
+      </Stack>
       <Toolbar>
         <Box
           component={Link}
