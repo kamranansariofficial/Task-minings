@@ -11,19 +11,19 @@ import { Box, OutlinedInput, InputAdornment } from '@mui/material';
 import { IoIosSearch } from 'react-icons/io';
 
 const RootStyle = styled(Box)(() => ({
-  maxHeight: 96,
+  maxHeight: 48,
   display: 'flex',
   justifyContent: 'space-between',
 }));
 
 const SearchStyle = styled(OutlinedInput)(({ theme }) => ({
-  width: 250,
+  width: 300,
   transition: theme.transitions.create(['box-shadow', 'width'], {
     easing: theme.transitions.easing.easeInOut,
     duration: theme.transitions.duration.shorter,
   }),
 
-  '&.Mui-focused': { width: 300 },
+  '&.Mui-focused': { width: 350 },
   [theme.breakpoints.down('sm')]: {
     width: 150,
     '&.Mui-focused': { width: 150 },
@@ -75,8 +75,8 @@ export default function Search() {
       <SearchStyle
         value={search}
         onChange={onChange}
-        placeholder='Search'
-        startAdornment={
+        placeholder='Search by name or id'
+        endAdornment={
           <InputAdornment position='start'>
             <IoIosSearch
               size={20}
