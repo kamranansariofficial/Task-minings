@@ -28,9 +28,9 @@ const GREY = {
 };
 
 const PRIMARY: any = {
-  light: '#66B1FD',
+  light: '#66E38C',
   main: '#02C644',
-  dark: '#0064CA',
+  dark: '#029B35',
   contrastText: '#fff',
 };
 const SECONDARY: any = {

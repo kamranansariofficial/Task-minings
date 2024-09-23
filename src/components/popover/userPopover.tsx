@@ -2,7 +2,7 @@ import * as React from 'react';
 import Popover from '@mui/material/Popover';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import { alpha, Avatar, Stack, useTheme } from '@mui/material';
+import { alpha, Avatar, Box, Stack, useTheme } from '@mui/material';
 // mui
 import ArrowDropDownIcon from '../../../public/static/icons/Vector.svg';
 import LogOutIcon from '../../../public/static/icons/logout-04.svg';
@@ -38,17 +38,32 @@ export default function UserPopover() {
         alignItems='center'
         spacing={1}
         sx={{
-          minWidth: 180,
+          minWidth: { xs: 50, md: 180 },
+          p: 0,
         }}>
-        <Image
-          src={AvatarIcon}
-          alt='logo'
-          width={43}
-          height={43}
-          layout='fixed'
-          objectFit='cover'
-        />
-        <Stack>
+        <Box
+          sx={{
+            position: 'relative',
+            height: { xs: 28, md: 43 },
+            width: { xs: 28, md: 43 },
+          }}>
+          <Image
+            src={AvatarIcon}
+            alt='logo'
+            fill
+            objectFit='cover'
+          />
+        </Box>
+        <Box
+          sx={{
+            display: { xs: 'block', md: 'none' },
+          }}>
+          <ArrowDropDownIcon />
+        </Box>
+        <Stack
+          sx={{
+            display: { xs: 'none', md: 'flex' },
+          }}>
           <Typography
             variant='subtitle2'
             color='text.primary'

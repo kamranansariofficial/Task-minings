@@ -82,7 +82,12 @@ export default function DashboardSidebar({ ...props }) {
   const drawer = (
     <Box
       py={2}
-      sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+      sx={{
+        height: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        bgcolor: (theme) => theme.palette.background.paper,
+      }}>
       <Toolbar>
         <Box
           component={Link}
@@ -226,11 +231,12 @@ export default function DashboardSidebar({ ...props }) {
           keepMounted: true, // Better open performance on mobile.
         }}
         sx={{
-          display: { xs: 'block', sm: 'none' },
+          display: { xs: 'block', md: 'none' },
           '& .MuiDrawer-paper': {
             boxSizing: 'border-box',
             width: drawerWidth,
             border: 'none',
+            bgcolor: (theme) => theme.palette.background.paper,
           },
         }}>
         {drawer}
@@ -238,7 +244,7 @@ export default function DashboardSidebar({ ...props }) {
       <Drawer
         variant='permanent'
         sx={{
-          display: { xs: 'none', sm: 'block' },
+          display: { xs: 'none', md: 'block' },
           '& .MuiDrawer-paper': {
             boxSizing: 'border-box',
             overflow: 'hidden',

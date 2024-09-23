@@ -65,7 +65,7 @@ const typography: any = {
     fontWeight: 700,
     lineHeight: 1.5,
     fontSize: pxToRem(18),
-    ...responsiveFontSizes({ sm: 18, md: 20, lg: 20 }),
+    ...responsiveFontSizes({ sm: 14, md: 20, lg: 20 }),
   },
   h6: {
     fontWeight: 700,
