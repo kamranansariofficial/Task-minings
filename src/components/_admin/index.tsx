@@ -179,7 +179,10 @@ function AdminDashboard() {
                                             curve: 'smooth',
                                         }
                                         , legend: {
-                                            show: false,
+                                            show: true,
+                                            position: 'bottom',
+                                            horizontalAlign: 'center',
+                                            offsetY: 20
 
                                         },
                                         markers: {
