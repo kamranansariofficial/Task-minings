@@ -98,7 +98,7 @@ export default function DashboardAppbar({ ...props }) {
                 13,583{' ' + ' '}
               </Typography>
               <IconButton size='small'>
-                <MdOutlineVisibilityOff size={16} />
+                <MdOutlineVisibilityOff size={18} />
               </IconButton>
             </Stack>
             {/* <LocaleSwitcher /> */}

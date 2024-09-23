@@ -80,7 +80,7 @@ export default function UserPopover() {
             color='primary'
             sx={{
               px: 1,
-              width: 70,
+              maxWidth: 90,
               fontWeight: 600,
               bgcolor: alpha(theme.palette.primary.main, 0.1),
               borderRadius: 1,
