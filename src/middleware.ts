@@ -39,6 +39,13 @@ export function middleware(request: NextRequest) {
   //   return
 
   // Check if there is any supported locale in the pathname
+  // Check if the current path is "/" and redirect to "/dashboard"
+  const supportedLocales = i18n.locales.map((locale) => `/${locale}`);
+  if (supportedLocales.includes(pathname)) {
+    const locale = pathname.split("/")[1];
+    return NextResponse.redirect(new URL(`/${locale}/dashboard`, request.url));
+  }
+
   const pathnameIsMissingLocale = i18n.locales.every(
     (locale) => !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`
   );
@@ -56,6 +63,7 @@ export function middleware(request: NextRequest) {
       )
     );
   }
+  return NextResponse.next();
 }
 
 export const config = {
