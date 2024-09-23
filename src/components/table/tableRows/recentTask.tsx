@@ -1,24 +1,11 @@
 import React from 'react';
 // mui
-import { useTheme } from '@mui/material/styles';
-import {
-  Box,
-  TableRow,
-  Skeleton,
-  TableCell,
-  Typography,
-  Stack,
-  IconButton,
-  Tooltip,
-} from '@mui/material';
+import { TableRow, Skeleton, TableCell, Typography } from '@mui/material';
 // icons
-import { MdDelete } from 'react-icons/md';
-import { MdEdit } from 'react-icons/md';
+import BitCoin from '../../../../public/static/icons/bitcoin-cpu-1.svg';
 
 export default function RecentTaskList({ ...props }) {
-  const { isLoading, row, handleClickOpen, handleClickOpenDelete, index } =
-    props;
-  const theme = useTheme();
+  const { isLoading, row } = props;
   return (
     <TableRow
       hover
@@ -35,7 +22,7 @@ export default function RecentTaskList({ ...props }) {
             width={20}
           />
         ) : (
-          index + 1
+          row._id
         )}
       </TableCell>
       <TableCell
@@ -44,47 +31,24 @@ export default function RecentTaskList({ ...props }) {
         sx={{
           textTransform: 'capitalize',
         }}>
-        {isLoading ? <Skeleton variant='text' /> : row?.type}
-      </TableCell>
-      <TableCell>
-        {isLoading ? <Skeleton variant='text' /> : row?.airport}
-      </TableCell>
-      <TableCell>
-        {isLoading ? <Skeleton variant='text' /> : row.order}
+        {isLoading ? <Skeleton variant='text' /> : row?.name}
       </TableCell>
       <TableCell align='right'>
-        <Stack
-          direction='row'
-          justifyContent='flex-end'>
-          {isLoading ? (
-            <Skeleton
-              variant='circular'
-              width={34}
-              height={34}
-              sx={{ mr: 1 }}
-            />
-          ) : (
-            <Tooltip title='Edit'>
-              <IconButton onClick={handleClickOpen(row)}>
-                <MdEdit />
-              </IconButton>
-            </Tooltip>
-          )}
-          {isLoading ? (
-            <Skeleton
-              variant='circular'
-              width={34}
-              height={34}
-              sx={{ mr: 1 }}
-            />
-          ) : (
-            <Tooltip title='Delete'>
-              <IconButton onClick={handleClickOpenDelete(row._id)}>
-                <MdDelete />
-              </IconButton>
-            </Tooltip>
-          )}
-        </Stack>
+        {isLoading ? (
+          <Skeleton variant='text' />
+        ) : (
+          <Typography
+            variant='body1'
+            color='primary'
+            sx={{
+              display: 'flex',
+              justifyContent: 'end',
+              alignItems: 'center',
+              gap: 1,
+            }}>
+            <BitCoin /> {row?.reward}
+          </Typography>
+        )}
       </TableCell>
     </TableRow>
   );
