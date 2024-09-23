@@ -1,23 +1,26 @@
 'use client';
-import React, { useState } from 'react';
+import React from 'react';
+// components
 import Table from 'src/components/table/table';
-// import BlogsRow from '@/components/table/tableRows/blogs';
+import RecentTaskRow from '@/components/table/tableRows/recentTask';
+import data from './data.json';
+
 const TABLE_HEAD = [
   { id: 'id', label: 'Task ID', alignRight: false },
   { id: 'name', label: 'Task Name', alignRight: false, sort: true },
-  { id: 'reward', label: 'Reward', alignRight: false, sort: true },
+  { id: 'reward', label: 'Reward', alignRight: true },
 ];
 
-export default function BlogsList() {
+export default function RecentTaskList() {
   return (
     <>
-      sdds
-      {/* <Table
+      <Table
         headData={TABLE_HEAD}
         data={data}
         isLoading={false}
-        row={BlogsRow}
-      /> */}
+        heading={'Recent Tasks'}
+        row={RecentTaskRow}
+      />
     </>
   );
 }

@@ -10,8 +10,12 @@ import TaskComplete from '../../../public/static/icons/checkmark-square-01.svg';
 import TaskLoading from '../../../public/static/icons/loading-01.svg';
 import Taskdollar from '../../../public/static/icons/save-money-dollar.svg';
 import TaskCoin from '../../../public/static/icons/bitcoin-cpu-1.svg';
+import RecentTaskList from './recentTask';
+import IncomeChart from '../charts/sale';
+import config from './config.json';
 
 export default function MainDashboard() {
+  const sales_report = config?.data?.salesReport;
   return (
     <Box>
       <Grid
@@ -67,6 +71,21 @@ export default function MainDashboard() {
             detail='3,550'
             isPrimary
             icon={<Taskdollar />}
+          />
+        </Grid>
+        <Grid
+          item
+          xs={12}
+          md={5}>
+          <RecentTaskList />
+        </Grid>
+        <Grid
+          item
+          xs={12}
+          md={7}>
+          <IncomeChart
+            data={sales_report}
+            isLoading={false}
           />
         </Grid>
       </Grid>

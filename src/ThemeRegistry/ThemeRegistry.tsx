@@ -12,6 +12,7 @@ import rtlPlugin from 'stylis-plugin-rtl';
 import typography from './typography';
 import breakpoints from './breakpoints';
 import componentsOverride from './overrides';
+import GlobalStyles from './globalStyles';
 
 const Localization = (lang: string) => {
   switch (lang) {
@@ -66,6 +67,7 @@ export default function ThemeRegistry({
         key: dir === 'rtl' ? 'muirtl' : 'css',
         stylisPlugins: dir === 'rtl' ? [prefixer, rtlPlugin] : [],
       }}>
+      <GlobalStyles />
       <ThemeProvider
         theme={{
           ...themeWithLocale,

@@ -12,16 +12,13 @@ export default function ProductListHead({ ...props }) {
   const { headData } = props;
   return (
     <TableHead>
-      <TableRow
-        sx={{
-          background: (theme) => theme.palette.primary.main,
-        }}>
+      <TableRow>
         {headData.map((headCell: any) => (
           <TableCell
             key={Math.random()}
             align={headCell.alignRight ? 'right' : 'left'}
             sx={{
-              color: 'common.white',
+              color: 'text.secondary',
               bgcolor: 'transparent',
             }}>
             {headCell.label}
