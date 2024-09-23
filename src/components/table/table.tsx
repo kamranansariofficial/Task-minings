@@ -118,37 +118,20 @@ const CustomTable: React.FC<CustomTableProps> = (props) => {
     <>
       <>
         <Card>
-          {(isSearch || isbtnText || isCSV || filters) && (
+          {(heading || isSearch || filters) && (
             <CardContent>
               <Stack
                 spacing={2}
                 direction='row'
                 alignItems='center'
                 justifyContent='space-between'>
+                <Typography
+                  variant='h5'
+                  color='text.primary'>
+                  {heading}
+                </Typography>
                 {isSearch ? <Search /> : <div />}
                 <div>
-                  {isbtnText && (
-                    <Button
-                      sx={{ display: 'flex' }}
-                      variant='contained'
-                      size='large'
-                      color='primary'
-                      onClick={handleClickOpenAdd}
-                      startIcon={<IoMdAdd size={20} />}>
-                      {isbtnText}
-                    </Button>
-                  )}
-                  {isCSV && (
-                    <Button
-                      sx={{ display: 'flex' }}
-                      variant='contained'
-                      size='large'
-                      color='primary'
-                      onClick={handleCSVDownload}
-                      startIcon={<FiDownload size={20} />}>
-                      Download CSV
-                    </Button>
-                  )}
                   {filters && (
                     <Stack
                       spacing={2}
@@ -193,7 +176,12 @@ const CustomTable: React.FC<CustomTableProps> = (props) => {
             <TableContainer>
               <Table>
                 <TableHead headData={headData} />
-                <TableBody>
+                <TableBody
+                  sx={{
+                    '.MuiTableCell-root': {
+                      color: 'text.secondary',
+                    },
+                  }}>
                   {(isLoading ? Array.from(new Array(6)) : data?.data).map(
                     (item: any, index: number) => (
                       <Component

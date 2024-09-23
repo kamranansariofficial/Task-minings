@@ -17,7 +17,10 @@ export default function DashboardCard({ ...props }) {
   const theme = useTheme();
   return (
     <Card>
-      <CardContent>
+      <CardContent
+        sx={{
+          px: 5,
+        }}>
         <Stack
           direction={{ xs: 'row', md: 'row' }}
           alignItems={{ xs: 'center', md: 'center' }}
