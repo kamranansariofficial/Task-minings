@@ -1,7 +1,7 @@
 // mui
 import { useTheme } from '@mui/material/styles';
 
-export default function BaseOptionChart(value: any) {
+export function BaseOptionChart(value: any) {
   const theme = useTheme();
 
   const LABEL_TOTAL = {
@@ -19,21 +19,21 @@ export default function BaseOptionChart(value: any) {
   const colors =
     value === 'donut'
       ? [
-          theme.palette.info.main,
-          theme.palette.secondary.main,
-          theme.palette.success.main,
-          theme.palette.warning.main,
-          theme.palette.error.main,
-          theme.palette.error.dark,
-        ]
+        theme.palette.info.main,
+        theme.palette.secondary.main,
+        theme.palette.success.main,
+        theme.palette.warning.main,
+        theme.palette.error.main,
+        theme.palette.error.dark,
+      ]
       : [
-          theme.palette.primary.main,
-          theme.palette.secondary.main,
-          theme.palette.info.main,
-          theme.palette.success.main,
-          theme.palette.warning.main,
-          theme.palette.error.main,
-        ];
+        theme.palette.primary.main,
+        theme.palette.secondary.main,
+        theme.palette.info.main,
+        theme.palette.success.main,
+        theme.palette.warning.main,
+        theme.palette.error.main,
+      ];
   return {
     // Colors
     colors,
@@ -194,3 +194,4 @@ export default function BaseOptionChart(value: any) {
     ],
   };
 }
+export default BaseOptionChart;

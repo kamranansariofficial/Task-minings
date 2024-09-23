@@ -1,9 +1,13 @@
 'use client'
-import { Box, Button, Card, CardContent, CardHeader, Grid, Grid2, Menu, MenuItem, Popover, Stack } from '@mui/material'
+import { Box, Card, CardContent, CardHeader, Grid, Menu, MenuItem, Stack } from '@mui/material'
 import React from 'react'
 import DashboardCard from '@/components/cards/dashboardCard'
 import Icon from '@/utils/icon'
-
+import dynamic from 'next/dynamic'
+import { merge } from 'lodash';
+import { BaseOptionChart, ChartStyled } from '@/components/charts'
+import { chartData } from './data'
+const Chart = dynamic(() => import('react-apexcharts'), { ssr: false });
 function AdminDashboard() {
     const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null);
     const [selectedOption, setSelectedOption] = React.useState('Month');
@@ -95,6 +99,11 @@ function AdminDashboard() {
                                         <Icon name='ic-arrow-down' />
                                     </Box>
                                     <Menu
+                                        slotProps={{
+                                            paper: {
+                                                sx: { minWidth: 98 }
+                                            }
+                                        }}
                                         id="basic-menu"
                                         anchorEl={anchorEl}
                                         open={open}
@@ -123,7 +132,73 @@ function AdminDashboard() {
 
                         />
                         <CardContent>
-                            fasd
+                            <ChartStyled>
+                                <Chart
+                                    type='line'
+                                    series={[
+                                        {
+                                            type: 'line',
+                                            name: '$',
+                                            data: chartData.salesReport.series1,
+
+                                        },
+                                        {
+                                            type: 'line',
+                                            name: '$',
+                                            data: chartData.salesReport.series2,
+
+                                        },
+                                    ]}
+
+                                    options={merge(BaseOptionChart('area'), {
+                                        xaxis: {
+                                            position: "bottom",
+                                            categories: [
+                                                'Jan',
+                                                'Feb',
+                                                'Mar',
+                                                'Apr',
+                                                'May',
+                                                'Jun',
+                                            ],
+
+                                            offsetY: 15,
+                                            tooltip: {
+                                                offsetY: 5
+                                            }
+
+                                        },
+
+                                        grid: {
+                                            show: true,
+                                            strokeDashArray: 5,
+                                            position: 'back',
+
+                                        },
+                                        stroke: {
+                                            curve: 'smooth',
+                                        }
+                                        , legend: {
+                                            show: false,
+
+                                        },
+                                        markers: {
+
+
+                                            customHTML: () => {
+                                                return document.createElement('div')
+                                                    .innerHTML = `<div class="apexcharts-marker custom-marker"><span></span></div>`
+
+                                            }
+
+
+
+
+                                        }
+                                    }) as any}
+                                    height={240}
+                                />
+                            </ChartStyled>
                         </CardContent>
 
                     </Card>

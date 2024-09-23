@@ -35,7 +35,6 @@ export default function ThemeRegistry({
   lang?: string;
 }) {
   const isDarkMode = useSelector(darkMode);
-  console.log(lang, 'lang');
   const locale = Localization(lang as string);
   const dir = lang === 'ar' ? 'rtl' : 'ltr';
   // // styleCache.compat = true;
