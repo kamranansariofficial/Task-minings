@@ -1,0 +1,57 @@
+{
+    "success": true,
+    "data": [
+        {
+            "_id": "233546",
+            "name": "Facebook like",
+            "category":"like",
+            "reward":"5.00",
+            "status": "pending",
+            "createdAt":"14-07-2024"
+        },
+        {
+            "_id": "233546",
+            "name": "Facebook like",
+            "category":"join",
+            "reward":"5.00",
+            "status": "pending",
+            "createdAt":"14-07-2024"
+        },
+        {
+            "_id": "233546",
+            "name": "Facebook like",
+            "category":"share",
+            "reward":"5.00",
+            "status": "pending",
+            "createdAt":"14-07-2024"
+        },
+        {
+            "_id": "233546",
+            "name": "Facebook like",
+            "category":"like",
+            "reward":"5.00",
+            "status": "pending",
+            "createdAt":"14-07-2024"
+        },
+        {
+            "_id": "233546",
+            "name": "Facebook like",
+            "category":"share",
+            "reward":"5.00",
+            "status": "pending",
+            "createdAt":"14-07-2024"
+        },
+        {
+            "_id": "233546",
+            "name": "Facebook like",
+            "category":"join",
+            "reward":"5.00",
+            "status": "pending",
+            "createdAt":"14-07-2024"
+        }
+        
+        
+    ],
+    "count":10
+   
+}

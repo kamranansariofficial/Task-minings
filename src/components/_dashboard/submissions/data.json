@@ -1,0 +1,46 @@
+{
+    "success": true,
+    "data": [
+        {
+            "_id": "233546",
+            "name": "Facebook like",
+            "reward":"5.00",
+            "status": "approved",
+            "category":"share",
+            "createdAt":"14-07-2024",
+            "action":"claim now"
+
+        },
+        {
+            "_id": "233546",
+            "name": "Facebook like",
+            "reward":"5.00",
+            "status": "pending",
+            "category":"like",
+            "createdAt":"15-07-2024",
+            "action":"claim now"
+
+        },
+        {
+            "_id": "233546",
+            "name": "Join Telegram ",
+            "reward":"5.00",
+            "status": "approved",
+            "category":"share",
+            "createdAt":"14-07-2024",
+            "action":"claimed"
+        }, 
+        {
+            "_id": "233546",
+            "name": "Share post",
+            "reward":"5.00",
+            "status": "rejected",
+            "category":"join",
+            "createdAt":"14-07-2024",
+            "action":"retry"
+
+        }
+    ],
+    "count":10
+   
+}

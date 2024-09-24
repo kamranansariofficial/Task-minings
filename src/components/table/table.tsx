@@ -18,8 +18,8 @@ import {
 } from '@mui/material';
 import Pagination from '@/components/pagination';
 import TableHead from './tableHead';
-import { IoMdAdd } from 'react-icons/io';
-import { FiDownload } from 'react-icons/fi';
+import { PiSlidersHorizontalLight } from 'react-icons/pi';
+
 import Search from '../search';
 
 // Define interfaces for your props
@@ -34,6 +34,7 @@ interface CustomTableProps {
   headData: any[];
   data: {
     data: any[];
+    count?: any;
     allData?: any[];
   };
   isLoading: boolean;
@@ -46,6 +47,7 @@ interface CustomTableProps {
   isSearch?: boolean;
   filters?: FilterItem[];
   [key: string]: any;
+  isFilter?: any;
 }
 const CustomTable: React.FC<CustomTableProps> = (props) => {
   const {
@@ -61,6 +63,7 @@ const CustomTable: React.FC<CustomTableProps> = (props) => {
     heading,
     isSearch,
     filters,
+    isFilter,
     ...rest
   } = props;
 
@@ -117,57 +120,74 @@ const CustomTable: React.FC<CustomTableProps> = (props) => {
   return (
     <>
       <>
-        <Card>
-          {(heading || isSearch || filters) && (
-            <CardContent>
-              <Stack
-                spacing={2}
-                direction='row'
-                alignItems='center'
-                justifyContent='space-between'>
+        <Card
+          sx={{
+            p: 2,
+          }}>
+          {(heading || isSearch || filters || isFilter) && (
+            <Stack
+              sx={{
+                p: 1,
+              }}
+              spacing={2}
+              direction='row'
+              alignItems='center'
+              justifyContent='space-between'>
+              {heading && (
                 <Typography
                   variant='h5'
                   color='text.primary'>
                   {heading}
                 </Typography>
-                {isSearch ? <Search /> : <div />}
-                <div>
-                  {filters && (
-                    <Stack
-                      spacing={2}
-                      direction='row'>
-                      {filters?.map((item) => (
-                        <FormControl
-                          fullWidth
-                          key={item.name}
-                          sx={{ maxWidth: 200, minWidth: 140, width: '100%' }}>
-                          <InputLabel id={'select-' + item.name}>
-                            {item.name}
-                          </InputLabel>
-                          <Select
-                            labelId={'select-' + item.name}
-                            id={'select-' + item.name}
-                            value={state[item.param] ?? ''}
-                            label={item.name}
-                            onChange={(e) =>
-                              handleChange(item.param, e.target.value)
-                            }>
-                            <MenuItem value=''>None</MenuItem>
-                            {item.data.map((v) => (
-                              <MenuItem
-                                value={v.slug}
-                                key={v.slug}>
-                                {v.name || v.title}
-                              </MenuItem>
-                            ))}
-                          </Select>
-                        </FormControl>
-                      ))}
-                    </Stack>
-                  )}
-                </div>
-              </Stack>
-            </CardContent>
+              )}
+
+              {isSearch ? <Search /> : <div />}
+              <div>
+                {filters && (
+                  <Stack
+                    spacing={2}
+                    direction='row'>
+                    {filters?.map((item) => (
+                      <FormControl
+                        fullWidth
+                        key={item.name}
+                        sx={{ maxWidth: 200, minWidth: 140, width: '100%' }}>
+                        <InputLabel id={'select-' + item.name}>
+                          {item.name}
+                        </InputLabel>
+                        <Select
+                          labelId={'select-' + item.name}
+                          id={'select-' + item.name}
+                          value={state[item.param] ?? ''}
+                          label={item.name}
+                          onChange={(e) =>
+                            handleChange(item.param, e.target.value)
+                          }>
+                          <MenuItem value=''>None</MenuItem>
+                          {item.data.map((v) => (
+                            <MenuItem
+                              value={v.slug}
+                              key={v.slug}>
+                              {v.name || v.title}
+                            </MenuItem>
+                          ))}
+                        </Select>
+                      </FormControl>
+                    ))}
+                  </Stack>
+                )}
+                {isFilter && (
+                  <Button
+                    size='large'
+                    variant='outlined'
+                    color='inherit'
+                    startIcon={<PiSlidersHorizontalLight />}
+                    sx={{ color: 'text.secondary', fontWeight: 600 }}>
+                    All tasks
+                  </Button>
+                )}
+              </div>
+            </Stack>
           )}
 
           {!isLoading && data?.data?.length === 0 ? (
@@ -198,9 +218,8 @@ const CustomTable: React.FC<CustomTableProps> = (props) => {
             </TableContainer>
           )}
         </Card>
-        {!isLoading && (
+        {!isLoading && data?.count && (
           <Stack
-            alignItems='flex-end'
             mt={2}
             pr={2}>
             <Pagination data={data} />
