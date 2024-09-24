@@ -74,6 +74,7 @@ export default function Search() {
     <RootStyle>
       <SearchStyle
         value={search}
+        size='small'
         onChange={onChange}
         placeholder='Search by name or id'
         endAdornment={

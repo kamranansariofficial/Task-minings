@@ -19,13 +19,17 @@ import { BiMenuAltLeft } from 'react-icons/bi';
 import { Box, Card, Stack, useMediaQuery, useTheme } from '@mui/material';
 import LocaleSwitcher from '@/components/locale-switcher';
 import UserPopover from '@/components/popover/userPopover';
+import { usePathname } from 'next/navigation';
 
 export default function DashboardAppbar({ ...props }) {
+  const pathname = usePathname();
   const { drawerWidth, handleDrawerToggle } = props;
   const isDarkMode = useSelector(darkMode);
   const dispatch = useDispatch();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+  const split = pathname.split("/")
+  const lastPath = split[split.length - 1];
   return (
     <AppBar
       position='fixed'
@@ -53,10 +57,11 @@ export default function DashboardAppbar({ ...props }) {
           </IconButton>
           <Typography
             variant='h4'
+            textTransform='capitalize'
             fontSize={{ xs: 14, md: 24 }}
             noWrap
             component='div'>
-            Dashboard
+            {lastPath}
           </Typography>
           <Box sx={{ flexGrow: 1 }} />
           <Stack

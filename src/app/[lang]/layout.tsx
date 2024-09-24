@@ -10,7 +10,10 @@ import { Toaster } from 'react-hot-toast';
 export async function generateStaticParams() {
   return i18n.locales.map((locale) => ({ lang: locale }));
 }
-
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFnsV3";
+import { LocaleFnsProvider } from "@/lib/localization";
+import { getLocale } from "next-intl/server";
 // export const metadata = {
 //   title: "Next.js App Router + Material UI v5",
 //   description: "Next.js App Router + Material UI v5",
@@ -43,7 +46,11 @@ export default function RootLayout({
                   <Box height={80} />
                 </>
               ))} */}
-            {children}
+            <LocalizationProvider
+              adapterLocale={LocaleFnsProvider(params.lang)}
+              dateAdapter={AdapterDateFns}>
+              {children}
+            </LocalizationProvider>
           </ThemeRegistry>
         </Providers>
       </body>

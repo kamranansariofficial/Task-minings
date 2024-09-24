@@ -10,8 +10,11 @@ const importAll = (requireContext: any) => {
 
 const svgs = importAll((require as any)?.context('@public/static/icons', false, /\.svg$/));
 // make component to load icon
-const Icon = ({ name, ...props }: { name: string } & React.SVGProps<SVGSVGElement>) => {
+const Icon = ({ name, className = "", ...props }: { name: string } & React.SVGProps<SVGSVGElement>) => {
   const Component = svgs[name];
-  return Component ? <Component {...props} /> : null;
+  return Component ? <Component {...props} className={
+    (`svg-icon ${className}`).trim()
+  }
+  /> : null;
 };
 export default Icon;
