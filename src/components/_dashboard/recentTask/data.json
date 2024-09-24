@@ -48,6 +48,29 @@
             "name": "Share post",
             "reward":"5.00",
             "status": "pending"
+        }, {
+            "_id": "233546",
+            "name": "Facebook like",
+            "reward":"5.00",
+            "status": "pending"
+        },
+        {
+            "_id": "233546",
+            "name": "Facebook like",
+            "reward":"5.00",
+            "status": "pending"
+        },
+        {
+            "_id": "233546",
+            "name": "Join Telegram ",
+            "reward":"5.00",
+            "status": "pending"
+        }, 
+        {
+            "_id": "233546",
+            "name": "Share post",
+            "reward":"5.00",
+            "status": "pending"
         }
     ]
    

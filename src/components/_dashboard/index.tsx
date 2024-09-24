@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 // mui
-import { Box, Grid } from '@mui/material';
+import { Box, Grid, Stack } from '@mui/material';
 // component
 import DashboardCard from '../cards/dashboardCard';
 // icons
@@ -13,6 +13,7 @@ import TaskCoin from '../../../public/static/icons/bitcoin-cpu-1.svg';
 import RecentTaskList from './recentTask';
 import IncomeChart from '../charts/sale';
 import config from './config.json';
+import AllSubmissionsList from '@/components/_dashboard/submissions/allSubmissions';
 
 export default function MainDashboard() {
   const sales_report = config?.data?.salesReport;
@@ -83,10 +84,13 @@ export default function MainDashboard() {
           item
           xs={12}
           md={7}>
-          <IncomeChart
-            data={sales_report}
-            isLoading={false}
-          />
+          <Stack spacing={3}>
+            <IncomeChart
+              data={sales_report}
+              isLoading={false}
+            />
+            <AllSubmissionsList />
+          </Stack>
         </Grid>
       </Grid>
     </Box>
