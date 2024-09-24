@@ -1,3 +1,4 @@
+
 import React from 'react';
 // mui
 import {
@@ -10,20 +11,17 @@ import {
   useTheme,
 } from '@mui/material';
 // icons
-import TaskEdit from '../../../public/static/icons/bitcoin-cpu-1.svg';
+import Icon from '@/utils/icon';
 
 export default function DashboardCard({ ...props }) {
-  const { title, detail, icon, isPrimary } = props;
+  const { title, detail, icon, isPrimary, ...rest } = props;
   const theme = useTheme();
   return (
-    <Card>
-      <CardContent
-        sx={{
-          px: 5,
-        }}>
+    <Card {...rest}>
+      <CardContent sx={{ p: { xs: 1.5, md: 3 } }}>
         <Stack
-          direction={{ xs: 'row', md: 'row' }}
-          alignItems={{ xs: 'center', md: 'center' }}
+          direction={{ xs: 'column-reverse', md: 'row' }}
+          alignItems={{ xs: 'flex-start', md: 'center' }}
           spacing={2}
           justifyContent='space-between'>
           <Stack spacing={0.2}>
@@ -40,7 +38,7 @@ export default function DashboardCard({ ...props }) {
                 alignItems: 'center',
               }}
               color={isPrimary ? 'primary' : 'text.primary'}>
-              {isPrimary && <TaskEdit />}
+              {isPrimary && <Icon name='bitcoin-cpu-1' />}
               {detail}
             </Typography>
           </Stack>

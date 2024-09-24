@@ -1,3 +1,4 @@
+'use client'
 import React from 'react';
 // mui
 import {
@@ -42,16 +43,23 @@ const navData = [
   {
     title: 'Main Menu',
     data: [
-      { name: 'Dashboard', path: '/dashboard', icon: <DashboardIcon /> },
-      { name: 'Task', path: '/dashboard/task', icon: <TaskIcon /> },
+      { name: 'Dashboard', slug: 'dashboard', path: '/dashboard', icon: <DashboardIcon /> },
+      { name: 'Task', slug: 'task', path: '/dashboard/task', icon: <TaskIcon /> },
       {
         name: 'All Submissions',
+        slug: 'submissions',
         path: '/dashboard/submissions',
         icon: <BagIcon />,
       },
-      { name: 'Referrals', path: '/dashboard/referrals', icon: <ChartIcon /> },
+      {
+        name: 'Referrals',
+        slug: 'referrals',
+        path: '/dashboard/referrals',
+        icon: <ChartIcon />
+      },
       {
         name: 'Transaction',
+        slug: 'transaction',
         path: '/dashboard/transaction',
         icon: <CardIcon />,
       },
@@ -60,8 +68,18 @@ const navData = [
   {
     title: 'Assistant',
     data: [
-      { name: 'Support', path: 'support', icon: <SupportIcon /> },
-      { name: 'Settings', path: 'settings', icon: <SettingIcon /> },
+      {
+        name: 'Support',
+        slug: 'support',
+        path: '/support',
+        icon: <SupportIcon />
+      },
+      {
+        name: 'Settings',
+        slug: 'settings',
+        path: '/settings',
+        icon: <SettingIcon />
+      },
     ],
   },
 ];
@@ -76,14 +94,28 @@ export default function DashboardSidebar({ ...props }) {
   } = props;
   const router = useRouter();
   const pathname = usePathname();
+
   const isDarkMode = useSelector(darkMode);
   const dispatch = useDispatch();
   const [active, setActive] = React.useState('');
   const [initial, setInitial] = React.useState(false);
   React.useEffect(() => {
-    setActive(pathname);
     setInitial(true);
   }, [pathname]);
+  const updateActive = (slug: string) => {
+    const split = pathname.split("/")
+    const lastPath = split[split.length - 1];
+    if (lastPath === 'dashboard') {
+      return pathname.includes(slug)
+    } else {
+      const url = pathname.replace("/dashboard", '');
+      return url.includes(slug)
+
+    }
+
+
+  }
+
 
   const drawer = (
     <Box
@@ -176,18 +208,18 @@ export default function DashboardSidebar({ ...props }) {
                           svg: {
                             color: 'text.secondary',
                           },
-                          ...(active === '/en' + text.path &&
+                          ...(updateActive(text.slug) &&
                             initial && {
-                              borderLeft: (theme) =>
-                                '3px solid' + theme.palette.primary.main,
+                            borderLeft: (theme) =>
+                              '3px solid' + theme.palette.primary.main,
+                            color: 'primary.main',
+                            bgcolor: (theme) =>
+                              alpha(theme.palette.primary.main, 0.2),
+                            pl: 4,
+                            svg: {
                               color: 'primary.main',
-                              bgcolor: (theme) =>
-                                alpha(theme.palette.primary.main, 0.2),
-                              pl: 4,
-                              svg: {
-                                color: 'primary.main',
-                              },
-                            }),
+                            },
+                          }),
                           ':hover': {
                             borderLeft: (theme) =>
                               '3px solid' + theme.palette.primary.main,
@@ -200,6 +232,7 @@ export default function DashboardSidebar({ ...props }) {
                             },
                           },
                         }}>
+
                         <ListItemIcon
                           sx={{
                             minWidth: 30,
@@ -209,7 +242,7 @@ export default function DashboardSidebar({ ...props }) {
                         <Typography
                           variant='body1'
                           fontWeight={
-                            active === '/en' + text.path && initial ? 600 : 400
+                            updateActive(text.slug) ? 600 : 400
                           }>
                           {text.name}
                         </Typography>
