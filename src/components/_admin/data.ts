@@ -12,3 +12,16 @@ export const chartData = {
     year: [0, 0, 0, 0, 0, 0, 5972, 33, 0, 0, 0, 0],
   },
 };
+export const tableData = {
+  data: [
+    {
+      id: 1,
+      taskId: "233546",
+      name: "Facebook like",
+      category: "like",
+      status: "Pending",
+      reward: "5.00",
+      date: "14-07-2024",
+    },
+  ],
+};

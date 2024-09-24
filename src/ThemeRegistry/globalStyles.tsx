@@ -56,6 +56,25 @@ export default function GlobalStyles() {
             },
           },
         },
+        '.custom-table-task': {
+          width: '100%',
+          th: {
+            padding: 12
+          },
+          borderCollapse: "collapse",
+          tbody: {
+            tr: {
+              position: 'relative',
+              '&:hover': {
+                backgroundColor: '#F5F6FA',
+              },
+
+              td: {
+                padding: 12
+              },
+            }
+          }
+        }
       }}
     />
   );
