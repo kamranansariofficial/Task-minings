@@ -61,7 +61,7 @@ export default function DashboardAppbar({ ...props }) {
             fontSize={{ xs: 14, md: 24 }}
             noWrap
             component='div'>
-            {lastPath}
+            {lastPath.replace('-', ' ')}
           </Typography>
           <Box sx={{ flexGrow: 1 }} />
           <Stack
