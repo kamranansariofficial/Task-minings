@@ -178,7 +178,6 @@ const CustomTable: React.FC<CustomTableProps> = (props) => {
                 )}
                 {isFilter && (
                   <Button
-                    size='large'
                     variant='outlined'
                     color='inherit'
                     startIcon={<PiSlidersHorizontalLight />}

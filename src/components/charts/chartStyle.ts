@@ -6,7 +6,6 @@ const ChartStyled = styled("div")(({ theme }) => ({
     border: "0 !important",
     color: `${theme.palette.text.primary} !important`,
     borderRadius: `1px !important`,
-    backgroundColor: `${theme.palette.background.default} !important`,
   },
   ".apexcharts-xaxistooltip": {
     backgroundColor: `${
