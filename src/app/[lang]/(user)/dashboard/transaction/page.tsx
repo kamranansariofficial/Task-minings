@@ -1,5 +1,6 @@
 import React from 'react';
+import TransactionsList from '@/components/_dashboard/transaction';
 
 export default function page() {
-  return <div>transaction</div>;
+  return <TransactionsList />;
 }
