@@ -22,7 +22,7 @@ function AdminListMobileCard({ ...props }) {
                 {isLoading ? <Skeleton
                     variant='text'
                     width={20}
-                /> : row.date}
+                /> : row.date || row.createdAt}
             </Typography>
             <Typography
                 variant='body2'
@@ -43,7 +43,7 @@ function AdminListMobileCard({ ...props }) {
                 {isLoading ? <Skeleton
                     variant='text'
                     width={20}
-                /> : <>ID: {row.taskId}</>}
+                /> : <>ID: {row.taskId || row._id}</>}
             </Typography>
             <Typography fontWeight={700} color="info" fontSize={12}>
                 {isLoading ? <Skeleton
