@@ -7,20 +7,44 @@ import {
   useTheme,
   Typography,
   Chip,
-  LinearProgress,
   Button,
+  styled,
 } from '@mui/material';
+import LinearProgress, {
+  linearProgressClasses,
+} from '@mui/material/LinearProgress';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import TelegramIcon from '@mui/icons-material/Telegram';
 import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 import DownloadIcon from '@mui/icons-material/Download';
+import Icon from '@/utils/icon';
+import TelegramJoinCard from '@/components/cards/telegramJoin';
+
+const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
+  height: 6,
+  width: '100%',
+  borderRadius: 5,
+  [`&.${linearProgressClasses.colorPrimary}`]: {
+    backgroundColor: theme.palette.grey[200],
+    ...theme.applyStyles('dark', {
+      backgroundColor: theme.palette.grey[800],
+    }),
+  },
+  [`& .${linearProgressClasses.bar}`]: {
+    borderRadius: 5,
+    backgroundColor: theme.palette.primary.main,
+    ...theme.applyStyles('dark', {
+      backgroundColor: theme.palette.primary.main,
+    }),
+  },
+}));
 
 export default function StepperMain() {
   const theme = useTheme();
   const steps = [
-    { label: 'Join Telegram', step: 'Step 1', icon: <TelegramIcon /> },
-    { label: 'Like Post', step: 'Step 2', icon: <ThumbUpAltIcon /> },
-    { label: 'Submit', step: 'Step 3', icon: <DownloadIcon /> },
+    { label: 'Join Telegram', step: 'Step 1', icon: 'telegram' },
+    { label: 'Like Post', step: 'Step 2', icon: 'thumbs-up' },
+    { label: 'Submit', step: 'Step 3', icon: 'upload-03' },
   ];
 
   const [activeStep, setActiveStep] = useState(0);
@@ -55,7 +79,7 @@ export default function StepperMain() {
 
   // Define chip color logic
   const getChipColor = (index: number) => {
-    return index === activeStep ? 'primary' : 'secondary';
+    return index <= activeStep ? 'primary' : 'secondary';
   };
 
   return (
@@ -65,44 +89,56 @@ export default function StepperMain() {
           <Stack
             direction='row'
             alignItems='center'
-            spacing={2}>
+            justifyContent='center'
+            spacing={{ xs: 1, md: 4 }}>
             {steps.map((step, index) => (
               <Stack
                 key={index}
                 direction='row'
                 alignItems='center'
-                spacing={2}>
+                spacing={{ xs: 1, md: 3 }}>
                 <Box
                   sx={{
-                    height: 40,
-                    width: 40,
+                    height: { xs: 34, md: 40 },
+                    width: { xs: 34, md: 40 },
                     borderRadius: '50%',
-                    border: '1px solid' + theme.palette.divider,
+                    border:
+                      index < activeStep
+                        ? '1px solid transparent'
+                        : '1px solid' + theme.palette.divider,
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                   }}>
                   <Box
                     sx={{
-                      height: 32,
-                      width: 32,
+                      height: { xs: 26, md: 32 },
+                      width: { xs: 26, md: 32 },
                       borderRadius: '50%',
                       bgcolor:
                         index <= activeStep
                           ? theme.palette.primary.main
-                          : '#fff',
+                          : theme.palette.background.paper,
+                      color:
+                        index <= activeStep
+                          ? theme.palette.common.white
+                          : theme.palette.text.secondary,
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
                     }}>
                     {index < activeStep ? (
-                      <CheckCircleIcon sx={{ color: '#00FF00' }} />
+                      <Icon name='check' />
                     ) : (
-                      step.icon
+                      <Icon name={step.icon} />
                     )}
                   </Box>
                 </Box>
-                <Stack>
+                <Stack
+                  sx={{
+                    display: { xs: 'none', md: 'flex' },
+                    minWidth: 120,
+                  }}>
                   <Typography
                     variant='subtitle2'
                     color='text.secondary'>
@@ -119,13 +155,18 @@ export default function StepperMain() {
                     label={getChipLabel(index)}
                     size='small'
                     color={getChipColor(index)}
+                    sx={{
+                      maxWidth: 90,
+                      width: '100%',
+                      fontSize: 12,
+                    }}
                   />
                 </Stack>
 
                 {/* Conditional rendering for progress bars, skipping the last step */}
                 {index !== steps.length - 1 && (
-                  <Box sx={{ minWidth: 200 }}>
-                    <LinearProgress
+                  <Box sx={{ minWidth: { xs: 85, md: 200 } }}>
+                    <BorderLinearProgress
                       variant='determinate'
                       value={getProgressValue(index)}
                     />
@@ -136,7 +177,14 @@ export default function StepperMain() {
           </Stack>
         </CardContent>
       </Card>
-      <Box sx={{ mt: 2 }}>
+      <Box my={2}>
+        {activeStep === 0 ? (
+          <TelegramJoinCard handleNext={handleNext} />
+        ) : (
+          'ewe'
+        )}
+      </Box>
+      <Box>
         <Button
           onClick={handleBack}
           disabled={activeStep === 0}
