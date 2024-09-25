@@ -1,9 +1,11 @@
 import React from 'react'
-
-function GeneralUsers() {
+import GeneralUsers from '@/components/_admin/generalUsers'
+function GeneralUsersPage() {
     return (
-        <div>GeneralUsers</div>
+        <>
+            <GeneralUsers />
+        </>
     )
 }
 
-export default GeneralUsers
+export default GeneralUsersPage

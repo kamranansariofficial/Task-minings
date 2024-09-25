@@ -1,0 +1,33 @@
+{
+    "success": true,
+    "data": [
+        {
+            "_id": "233546",
+            "name": "Hailey Patrick",
+            "email": "Example@gmail.com",
+            "phone": "+00 00 000 0000",
+            "status": "Active",
+            "subscriptions": "One time purchase",
+            "country": "USA"
+        },
+        {
+            "_id": "XXXXXX",
+            "name": "Hailey Patrick",
+            "email": "Example@gmail.com",
+            "phone": "+00 00 000 0000",
+            "status": "Active",
+            "subscriptions": "One time purchase",
+            "country": "USA"
+        },
+        {
+            "_id": "XXXXXX",
+            "name": "Hailey Patrick",
+            "email": "Example@gmail.com",
+            "phone": "+00 00 000 0000",
+            "status": "inActive",
+            "subscriptions": "One time purchase",
+            "country": "USA"
+        }
+    ],
+    "count": 10
+}
