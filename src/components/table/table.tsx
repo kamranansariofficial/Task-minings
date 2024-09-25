@@ -217,14 +217,14 @@ const CustomTable: React.FC<CustomTableProps> = (props) => {
               </Table>
             </TableContainer>
           )}
+          {!isLoading && data?.count && (
+            <Stack
+              mt={2}
+              pr={2}>
+              <Pagination data={data} />
+            </Stack>
+          )}
         </Card>
-        {!isLoading && data?.count && (
-          <Stack
-            mt={2}
-            pr={2}>
-            <Pagination data={data} />
-          </Stack>
-        )}
       </>
     </>
   );

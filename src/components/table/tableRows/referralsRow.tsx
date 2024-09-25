@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 // mui
 import {
@@ -5,19 +6,16 @@ import {
   Skeleton,
   TableCell,
   Typography,
-  Button,
+  IconButton,
   useTheme,
 } from '@mui/material';
 // icons
-import BitCoin from '../../../../public/static/icons/usdt.svg';
-import Label from '@/components/label';
-import { useRouter } from 'next-nprogress-bar';
+import BitCoin from '../../../../public/static/icons/bitcoin-cpu-1.svg';
+import { LuEye } from 'react-icons/lu';
 
-export default function AllTaskRow({ ...props }) {
+export default function ReferralsRow({ ...props }) {
   const { isLoading, row } = props;
-  const router = useRouter();
   const theme = useTheme();
-
   return (
     <TableRow
       hover
@@ -45,22 +43,7 @@ export default function AllTaskRow({ ...props }) {
         }}>
         {isLoading ? <Skeleton variant='text' /> : row?.name}
       </TableCell>
-      <TableCell>
-        {isLoading ? (
-          <Skeleton variant='text' />
-        ) : (
-          <Label
-            variant={theme.palette.mode === 'light' ? 'ghost' : 'ghost'}
-            color={
-              (row?.category === 'share' && 'primary') ||
-              (row?.category === 'join' && 'secondary') ||
-              'info'
-            }>
-            {row.category}
-          </Label>
-        )}
-      </TableCell>
-      <TableCell>
+      <TableCell align='right'>
         {isLoading ? (
           <Skeleton variant='text' />
         ) : (
@@ -76,17 +59,18 @@ export default function AllTaskRow({ ...props }) {
           </Typography>
         )}
       </TableCell>
-      <TableCell>
-        {isLoading ? <Skeleton variant='text' /> : row?.createdAt}
-      </TableCell>
       <TableCell align='right'>
-        <Button
-          onClick={() => router.push(`/dashboard/task/${row?._id}`)}
-          variant='contained'
-          size='small'
-          color='primary'>
-          Start
-        </Button>
+        {isLoading ? (
+          <Skeleton
+            variant='circular'
+            width={34}
+            height={34}
+          />
+        ) : (
+          <IconButton>
+            <LuEye size={18} />
+          </IconButton>
+        )}
       </TableCell>
     </TableRow>
   );
