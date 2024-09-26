@@ -1,0 +1,30 @@
+{
+    "success": true,
+    "data": [
+        {
+            "name": "Hailey Patrick",
+            "email": "Example@gmail.com",
+            "phone": "+00 00 000 0000",
+            "status": "Active",
+            "role": "Administrator",
+            "country": "USA"
+        },
+        {
+            "name": "Hailey Patrick",
+            "email": "Example@gmail.com",
+            "phone": "+00 00 000 0000",
+            "status": "Active",
+            "role": "Administrator",
+            "country": "USA"
+        },
+        {
+            "name": "Hailey Patrick",
+            "email": "Example@gmail.com",
+            "phone": "+00 00 000 0000",
+            "status": "inActive",
+            "role": "Administrator",
+            "country": "USA"
+        }
+    ],
+    "count": 10
+}
