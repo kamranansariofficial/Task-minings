@@ -1,0 +1,56 @@
+{
+    "success": true,
+    "data": [
+        {
+            "_id": "145844d884",
+            "email": "sam@mail.com",
+            "time": "11:30 PM",
+            "type": "Incoming",
+            "status": "complete",
+            "category": "share",
+            "createdAt": "14-07-2024",
+            "amount": "5000"
+        },
+        {
+            "_id": "145844d884",
+            "email": "sam@mail.com",
+            "time": "11:30 PM",
+            "type": "Incoming",
+            "status": "complete",
+            "category": "share",
+            "createdAt": "14-07-2024",
+            "amount": "5000"
+        },
+        {
+            "_id": "145844d884",
+            "email": "sam@mail.com",
+            "time": "11:30 PM",
+            "type": "Withdrawal",
+            "status": "complete",
+            "category": "share",
+            "createdAt": "14-07-2024",
+            "amount": "5000"
+        },
+        {
+            "_id": "145844d884",
+            "email": "sam@mail.com",
+            "time": "11:30 PM",
+            "type": "Withdrawal",
+            "status": "complete",
+            "category": "share",
+            "createdAt": "14-07-2024",
+            "amount": "5000"
+        },
+        {
+            "_id": "145844d884",
+            "email": "sam@mail.com",
+            "time": "11:30 PM",
+            "type": "Withdrawal",
+            "status": "complete",
+            "category": "share",
+            "createdAt": "14-07-2024",
+            "amount": "5000"
+        }
+    ],
+    "count": 10
+}
