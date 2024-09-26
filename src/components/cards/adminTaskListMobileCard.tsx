@@ -7,6 +7,8 @@ function AdminListMobileCard({ ...props }) {
     return (
         <Stack sx={{
             display: 'grid',
+            borderBottom: 1,
+            borderColor: 'divider',
             p: 2,
             '&:hover': { backgroundColor: theme => theme.palette.grey[200] },
             gridTemplateColumns: 'repeat(3, minmax(70px, 1fr))',

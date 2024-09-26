@@ -18,7 +18,7 @@ function GeneralUserMobileCard({ ...props }) {
             <Stack>
                 <Typography color='text.secondary' fontSize={12}>{row?.phone}</Typography>
                 <Typography fontSize={12} color='text.secondary'>
-                    {row?.subscriptions}
+                    {row?.subscriptions || row?.role}
                 </Typography>
             </Stack>
             <Stack>
