@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import React from 'react';
 // mui
 import {
@@ -43,8 +43,18 @@ const navData = [
   {
     title: 'Main Menu',
     data: [
-      { name: 'Dashboard', slug: 'dashboard', path: '/dashboard', icon: <DashboardIcon /> },
-      { name: 'Task', slug: 'task', path: '/dashboard/task', icon: <TaskIcon /> },
+      {
+        name: 'Dashboard',
+        slug: 'dashboard',
+        path: '/dashboard',
+        icon: <DashboardIcon />,
+      },
+      {
+        name: 'Task',
+        slug: 'task',
+        path: '/dashboard/task',
+        icon: <TaskIcon />,
+      },
       {
         name: 'All Submissions',
         slug: 'submissions',
@@ -55,7 +65,7 @@ const navData = [
         name: 'Referrals',
         slug: 'referrals',
         path: '/dashboard/referrals',
-        icon: <ChartIcon />
+        icon: <ChartIcon />,
       },
       {
         name: 'Transaction',
@@ -71,14 +81,14 @@ const navData = [
       {
         name: 'Support',
         slug: 'support',
-        path: '/support',
-        icon: <SupportIcon />
+        path: '/dashboard/support',
+        icon: <SupportIcon />,
       },
       {
         name: 'Settings',
         slug: 'settings',
-        path: '/settings',
-        icon: <SettingIcon />
+        path: '/dashboard/settings',
+        icon: <SettingIcon />,
       },
     ],
   },
@@ -103,19 +113,15 @@ export default function DashboardSidebar({ ...props }) {
     setInitial(true);
   }, [pathname]);
   const updateActive = (slug: string) => {
-    const split = pathname.split("/")
+    const split = pathname.split('/');
     const lastPath = split[split.length - 1];
     if (lastPath === 'dashboard') {
-      return pathname.includes(slug)
+      return pathname.includes(slug);
     } else {
-      const url = pathname.replace("/dashboard", '');
-      return url.includes(slug)
-
+      const url = pathname.replace('/dashboard', '');
+      return url.includes(slug);
     }
-
-
-  }
-
+  };
 
   const drawer = (
     <Box
@@ -210,16 +216,16 @@ export default function DashboardSidebar({ ...props }) {
                           },
                           ...(updateActive(text.slug) &&
                             initial && {
-                            borderLeft: (theme) =>
-                              '3px solid' + theme.palette.primary.main,
-                            color: 'primary.main',
-                            bgcolor: (theme) =>
-                              alpha(theme.palette.primary.main, 0.2),
-                            pl: 4,
-                            svg: {
+                              borderLeft: (theme) =>
+                                '3px solid' + theme.palette.primary.main,
                               color: 'primary.main',
-                            },
-                          }),
+                              bgcolor: (theme) =>
+                                alpha(theme.palette.primary.main, 0.2),
+                              pl: 4,
+                              svg: {
+                                color: 'primary.main',
+                              },
+                            }),
                           ':hover': {
                             borderLeft: (theme) =>
                               '3px solid' + theme.palette.primary.main,
@@ -232,7 +238,6 @@ export default function DashboardSidebar({ ...props }) {
                             },
                           },
                         }}>
-
                         <ListItemIcon
                           sx={{
                             minWidth: 30,
@@ -241,9 +246,7 @@ export default function DashboardSidebar({ ...props }) {
                         </ListItemIcon>
                         <Typography
                           variant='body1'
-                          fontWeight={
-                            updateActive(text.slug) ? 600 : 400
-                          }>
+                          fontWeight={updateActive(text.slug) ? 600 : 400}>
                           {text.name}
                         </Typography>
                       </ListItemButton>
