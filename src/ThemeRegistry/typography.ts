@@ -65,13 +65,13 @@ const typography: any = {
     fontWeight: 700,
     lineHeight: 1.5,
     fontSize: pxToRem(18),
-    ...responsiveFontSizes({ sm: 14, md: 20, lg: 20 }),
+    ...responsiveFontSizes({ sm: 16, md: 20, lg: 20 }),
   },
   h6: {
     fontWeight: 700,
     lineHeight: 28 / 18,
     fontSize: pxToRem(17),
-    ...responsiveFontSizes({ sm: 14, md: 18, lg: 18 }),
+    ...responsiveFontSizes({ sm: 16, md: 18, lg: 18 }),
   },
   subtitle1: {
     fontWeight: 600,
