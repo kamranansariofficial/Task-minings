@@ -18,7 +18,7 @@ const CustomInput = React.forwardRef(function custom(props, ref) {
     />
   )
 })
-function newAdmin() {
+function AddAdmin() {
   const phoneInputRef = React.useRef(null);
   const router = useRouter()
   const formik = useFormik({
@@ -55,7 +55,7 @@ function newAdmin() {
           }}
           subheader={
             <Button
-              onClick={() => router.back()}
+              onClick={() => router.push('/admin/admins')}
               startIcon={<Icon name="ic-arrow-left" />} color='inherit'>
               Back
             </Button>
@@ -317,4 +317,4 @@ function newAdmin() {
   )
 }
 
-export default newAdmin
+export default AddAdmin
