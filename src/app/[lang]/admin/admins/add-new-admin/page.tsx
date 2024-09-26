@@ -1,8 +1,8 @@
 import React from 'react'
-import NewAdmin from '@/components/_admin/admins/newAdmin'
+import AddAdmin from '@/components/_admin/admins/addAdmin'
 function AddAdminPage() {
     return (
-        <NewAdmin />
+        <AddAdmin />
     )
 }
 
