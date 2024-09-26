@@ -9,9 +9,9 @@ import {
   Stack,
 } from '@mui/material';
 import Image from 'next/image';
-import TeleImg from '@public/static/telegram.png';
+import TeleImg from '@public/static/like.png';
 
-export default function TelegramJoinCard({ ...props }) {
+export default function LikePostCard({ ...props }) {
   const { handleNext } = props;
   return (
     <Card>
@@ -35,7 +35,7 @@ export default function TelegramJoinCard({ ...props }) {
               objectFit='contain'
             />
           </Box>
-          <Typography variant='h5'>Join Telegram</Typography>
+          <Typography variant='h5'>Like post</Typography>
           <Typography
             variant='body2'
             color='text.secondary'
@@ -44,9 +44,8 @@ export default function TelegramJoinCard({ ...props }) {
               maxWidth: 450,
               pb: 1,
             }}>
-            Join our Telegram community for the latest updates, exclusive
-            content, and engaging discussions! Click the link to connect with
-            us.
+            Enjoyed this post? Give it a like and
+            <br /> show your support!
           </Typography>
           <Box>
             <Button

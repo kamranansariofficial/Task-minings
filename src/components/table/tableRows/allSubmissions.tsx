@@ -52,7 +52,7 @@ export default function AllSubmissionsRow({ ...props }) {
           <Skeleton variant='text' />
         ) : (
           <Label
-            variant={theme.palette.mode === 'light' ? 'ghost' : 'filled'}
+            variant={theme.palette.mode === 'light' ? 'ghost' : 'ghost'}
             color={
               (row?.status === 'approved' && 'primary') ||
               (row?.status === 'pending' && 'error') ||

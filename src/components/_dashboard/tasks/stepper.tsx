@@ -19,6 +19,8 @@ import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 import DownloadIcon from '@mui/icons-material/Download';
 import Icon from '@/utils/icon';
 import TelegramJoinCard from '@/components/cards/telegramJoin';
+import LikePostCard from '@/components/cards/likePost';
+import UploadSingleFile from '@/components/upload/UploadSingleFile';
 
 const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
   height: 6,
@@ -27,7 +29,7 @@ const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
   [`&.${linearProgressClasses.colorPrimary}`]: {
     backgroundColor: theme.palette.grey[200],
     ...theme.applyStyles('dark', {
-      backgroundColor: theme.palette.grey[800],
+      backgroundColor: theme.palette.grey[500],
     }),
   },
   [`& .${linearProgressClasses.bar}`]: {
@@ -46,7 +48,28 @@ export default function StepperMain() {
     { label: 'Like Post', step: 'Step 2', icon: 'thumbs-up' },
     { label: 'Submit', step: 'Step 3', icon: 'upload-03' },
   ];
+  const [file, setFile] = useState<any>(null);
+  const [loading, setLoading] = useState<number | boolean>(false); // Handles percentage or false when done
 
+  const handleDrop = async (acceptedFiles: any) => {
+    setLoading(2); // Indicating initial loading state
+    const droppedFile = acceptedFiles[0];
+    if (droppedFile) {
+      const preview = URL.createObjectURL(droppedFile);
+      setFile({ ...droppedFile, preview }); // Save the file and its preview
+    }
+
+    // Simulate upload progress for local state
+    let percentage = 0;
+    const uploadInterval = setInterval(() => {
+      percentage += 10; // Increment progress by 10%
+      setLoading(percentage);
+      if (percentage >= 100) {
+        clearInterval(uploadInterval);
+        setLoading(false); // Done loading
+      }
+    }, 200); // Simulating every 200ms
+  };
   const [activeStep, setActiveStep] = useState(0);
 
   const handleNext = () => {
@@ -90,17 +113,17 @@ export default function StepperMain() {
             direction='row'
             alignItems='center'
             justifyContent='center'
-            spacing={{ xs: 1, md: 4 }}>
+            spacing={{ xs: 0.5, md: 4 }}>
             {steps.map((step, index) => (
               <Stack
                 key={index}
                 direction='row'
                 alignItems='center'
-                spacing={{ xs: 1, md: 3 }}>
+                spacing={{ xs: 0.5, md: 3 }}>
                 <Box
                   sx={{
-                    height: { xs: 34, md: 40 },
-                    width: { xs: 34, md: 40 },
+                    height: { xs: 32, md: 40 },
+                    width: { xs: 32, md: 40 },
                     borderRadius: '50%',
                     border:
                       index < activeStep
@@ -112,8 +135,8 @@ export default function StepperMain() {
                   }}>
                   <Box
                     sx={{
-                      height: { xs: 26, md: 32 },
-                      width: { xs: 26, md: 32 },
+                      height: { xs: 24, md: 32 },
+                      width: { xs: 24, md: 32 },
                       borderRadius: '50%',
                       bgcolor:
                         index <= activeStep
@@ -159,13 +182,18 @@ export default function StepperMain() {
                       maxWidth: 90,
                       width: '100%',
                       fontSize: 12,
+                      color:
+                        index <= activeStep ? 'primary.main' : 'text.secondary',
+                      borderColor:
+                        index <= activeStep
+                          ? theme.palette.primary.main
+                          : theme.palette.divider,
                     }}
                   />
                 </Stack>
 
-                {/* Conditional rendering for progress bars, skipping the last step */}
                 {index !== steps.length - 1 && (
-                  <Box sx={{ minWidth: { xs: 85, md: 200 } }}>
+                  <Box sx={{ minWidth: { xs: 70, sm: 90, md: 200 } }}>
                     <BorderLinearProgress
                       variant='determinate'
                       value={getProgressValue(index)}
@@ -180,23 +208,46 @@ export default function StepperMain() {
       <Box my={2}>
         {activeStep === 0 ? (
           <TelegramJoinCard handleNext={handleNext} />
+        ) : activeStep === 1 ? (
+          <LikePostCard handleNext={handleNext} />
         ) : (
-          'ewe'
+          <Card>
+            <CardContent>
+              <Stack
+                justifyContent='center'
+                alignItems='center'
+                spacing={2}
+                my={4}>
+                <Typography variant='h5'>Submit Screenshot</Typography>
+                <Typography
+                  variant='body2'
+                  color='text.secondary'
+                  textAlign='center'
+                  sx={{
+                    maxWidth: 450,
+                    pb: 1,
+                  }}>
+                  Submit your screenshot here for a chance to be featured!
+                </Typography>
+                <UploadSingleFile
+                  id='cover-upload'
+                  file={file}
+                  onDrop={(acceptedFiles: any) => handleDrop(acceptedFiles)}
+                  accept='image/*'
+                  loading={loading} // Show loading progress
+                />
+                <Box pt={1}>
+                  <Button
+                    onClick={handleNext}
+                    variant='contained'
+                    color='primary'>
+                    submit
+                  </Button>
+                </Box>
+              </Stack>
+            </CardContent>
+          </Card>
         )}
-      </Box>
-      <Box>
-        <Button
-          onClick={handleBack}
-          disabled={activeStep === 0}
-          variant='contained'
-          sx={{ mr: 1 }}>
-          Back
-        </Button>
-        <Button
-          onClick={handleNext}
-          variant='contained'>
-          Next
-        </Button>
       </Box>
     </Box>
   );
