@@ -10,6 +10,7 @@ import {
   Stack,
   useTheme,
   Typography,
+  useMediaQuery,
 } from '@mui/material';
 // icons
 import { RxCross2 } from 'react-icons/rx';
@@ -20,6 +21,7 @@ import TaskStepper from './stepper';
 export default function TaskDetails({ ...props }) {
   const { id } = props;
   const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   return (
     <Box>
       <Box
@@ -34,7 +36,10 @@ export default function TaskDetails({ ...props }) {
           startIcon={<RxCross2 />}
           sx={{
             border: '1px solid' + theme.palette.divider,
-            bgcolor: theme.palette.background.paper,
+            bgcolor:
+              theme.palette.mode === 'light'
+                ? theme.palette.background.paper
+                : theme.palette.background.default,
             color: theme.palette.text.secondary,
             fontWeight: 500,
           }}>
@@ -45,7 +50,7 @@ export default function TaskDetails({ ...props }) {
       <Card sx={{ mb: 2 }}>
         <CardContent
           sx={{
-            pl: 8,
+            pl: { xs: 3, md: 8 },
           }}>
           <Grid
             container
@@ -81,11 +86,19 @@ export default function TaskDetails({ ...props }) {
                   Category
                 </Typography>
                 <Box>
-                  <Label
-                    variant='ghost'
-                    color='info'>
-                    Like
-                  </Label>
+                  {isMobile ? (
+                    <Typography
+                      variant='subtitle2'
+                      color='info'>
+                      Like
+                    </Typography>
+                  ) : (
+                    <Label
+                      variant='ghost'
+                      color='info'>
+                      Like
+                    </Label>
+                  )}
                 </Box>
               </Stack>
             </Grid>
