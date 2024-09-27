@@ -58,6 +58,12 @@ const ChartStyled = styled("div")(({ theme }) => ({
     color: `${theme.palette.text.secondary} !important`,
     textTransform: "capitalize",
   },
+  ".apexcharts-tooltip-marker": {
+    width: "4px !important",
+    height: "12px !important",
+    borderRadius: "2px !important",
+    marginRight: "8px !important",
+  },
 }));
 
 export default ChartStyled;
