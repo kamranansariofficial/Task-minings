@@ -38,7 +38,7 @@ function IncomeWithdraw() {
                         title={<Stack>
                             <Typography variant='body2' color='text.secondary' fontWeight={700}>Total Income</Typography>
                             <Stack direction='row' alignItems='center' spacing={1}>
-                                <Icon name="bitcoin-cpu-primary" />
+                                <Icon width={30} height={30} name="bitcoin-cpu-primary" />
                                 <Typography color='primary' variant='h4'>13,583</Typography>
                             </Stack>
 
@@ -54,13 +54,13 @@ function IncomeWithdraw() {
                         title={<Stack>
                             <Typography variant='body2' color='text.secondary' fontWeight={700}>Total Withdrawal</Typography>
                             <Stack direction='row' alignItems='center' spacing={1}>
-                                <Icon name="bitcoin-cpu-primary" />
+                                <Icon width={30} height={30} name="bitcoin-cpu-primary" />
                                 <Typography color='primary' variant='h4'>13,583</Typography>
                             </Stack>
 
                         </Stack>}
                         action={<IconButton disableRipple sx={{ width: 43, height: 43, borderRadius: 3, bgcolor: theme => alpha(theme.palette.text.secondary, 0.3) }} >
-                            <Icon name="bitcoin-cpu" />
+                            <Icon name="ic-save-money-dollar" />
                         </IconButton>}
                     />
                 </Card>
@@ -70,7 +70,7 @@ function IncomeWithdraw() {
                         title={<Stack>
                             <Typography variant='body2' color='text.secondary' fontWeight={700}>Accumulated Income</Typography>
                             <Stack direction='row' alignItems='center' spacing={1}>
-                                <Icon name="bitcoin-cpu-primary" />
+                                <Icon width={30} height={30} name="bitcoin-cpu-primary" />
                                 <Typography color='primary' variant='h4'>13,583</Typography>
                             </Stack>
 
