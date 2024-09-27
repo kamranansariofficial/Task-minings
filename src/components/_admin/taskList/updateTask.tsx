@@ -1,12 +1,13 @@
 'use client'
 import Icon from '@/utils/icon'
 import { Button, Card, CardContent, CardHeader, Dialog, DialogActions, DialogContent, DialogTitle, Divider, FormControl, IconButton, InputAdornment, InputLabel, MenuItem, Select, Stack, TextField, Typography, } from '@mui/material'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useFormik, Form, FormikProvider } from 'formik'
 import { DatePicker } from "@mui/x-date-pickers";
 import CloseIcon from '@mui/icons-material/Close';
 import Label from '@/components/label'
-function UpdateTask() {
+function UpdateTask({ ...props }) {
+    const { slug = null } = props;
     const formik = useFormik({
         enableReinitialize: true,
         initialValues: {
@@ -52,31 +53,46 @@ function UpdateTask() {
                             alignSelf: 'center',
 
 
-                        }
+                        },
+                        ...(slug && {
+                            flexDirection: { xs: 'column', md: 'row' },
+                            alignItems: { xs: 'flex-start', md: 'center' },
+                            '.MuiCardHeader-action': {
+                                width: { xs: 1, md: 'auto' },
+                                button: {
+                                    width: { xs: 1, md: 'auto' }
+                                }
+                            }
+                        })
+
+
                     }}
                     subheader={
                         <Stack spacing={1} alignItems='flex-start'>
                             <Button startIcon={<Icon name="ic-arrow-left" />} color='inherit'>
                                 Back
                             </Button>
-                            <Stack spacing={1}>
-                                <Stack direction='row' alignItems="center" spacing={2}>
-                                    <Typography color="text.primary" variant='h5'>
-                                        Facebook Like
-                                    </Typography>
-                                    <Label sx={{ height: 30 }} color='primary'>
-                                        Approved
-                                    </Label>
+                            {slug && (
+                                <Stack spacing={1}>
+                                    <Stack direction='row' alignItems="center" spacing={2}>
+                                        <Typography color="text.primary" variant='h5'>
+                                            Facebook Like
+                                        </Typography>
+                                        <Label sx={{ height: 30 }} color='primary'>
+                                            Approved
+                                        </Label>
+                                    </Stack>
+                                    <Stack direction='row' alignItems='center' spacing={1}>
+                                        <Typography fontWeight={600} color="text.secondary" variant='body2'>
+                                            ID:12344566
+                                        </Typography>
+                                        <IconButton onClick={() => handleCopy('1234566')}>
+                                            <Icon name="ic-file-copy" />
+                                        </IconButton>
+                                    </Stack>
                                 </Stack>
-                                <Stack direction='row' alignItems='center' spacing={1}>
-                                    <Typography fontWeight={600} color="text.secondary" variant='body2'>
-                                        ID:12344566
-                                    </Typography>
-                                    <IconButton onClick={() => handleCopy('1234566')}>
-                                        <Icon name="ic-file-copy" />
-                                    </IconButton>
-                                </Stack>
-                            </Stack>
+                            )}
+
                         </Stack>
                     }
                     action={
@@ -211,7 +227,7 @@ function UpdateTask() {
                                     Cancel
                                 </Button>
                                 <Button startIcon={<Icon name="ic-task-01" />} type='submit' variant='contained'>
-                                    Update
+                                    {slug ? 'Update' : 'Create Task'}
                                 </Button>
                             </Stack>
                         </Stack>

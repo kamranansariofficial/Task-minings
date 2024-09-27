@@ -17,18 +17,21 @@ import {
   IconButton,
 } from '@mui/material';
 // mui icons
-import DashboardIcon from '../../../../public/static/icons/dashboard.svg';
-import LogoutIcon from '../../../../public/static/icons/logout-04.svg';
-import TaskIcon from '../../../../public/static/icons/task-edit-02.svg';
-import BagIcon from '../../../../public/static/icons/bitcoin-bag.svg';
-import ChartIcon from '../../../../public/static/icons/chart-relationship.svg';
-import CardIcon from '../../../../public/static/icons/credit-card-pos.svg';
-import SupportIcon from '../../../../public/static/icons/customer-support.svg';
-import SettingIcon from '../../../../public/static/icons/ai-setting.svg';
-import LightLogo from '../../../../public/static/logo-light.png';
-import DarkLogo from '../../../../public/static/logo-dark.png';
-import DarkMode from '../../../../public/static/icons/dark_mode.svg';
-import LightMode from '../../../../public/static/icons/wb_sunny.svg';
+import DashboardIcon from '@public/static/icons/dashboard.svg';
+import LogoutIcon from '@public/static/icons/logout-04.svg';
+import TaskIcon from '@public/static/icons/task-edit-02.svg';
+import BagIcon from '@public/static/icons/bitcoin-bag.svg';
+import ChartIcon from '@public/static/icons/chart-relationship.svg';
+import CardIcon from '@public/static/icons/credit-card-pos.svg';
+import SupportIcon from '@public/static/icons/customer-support.svg';
+import SettingIcon from '@public/static/icons/ai-setting.svg';
+import LightLogo from '@public/static/logo-light.png';
+import DarkLogo from '@public/static/logo-dark.png';
+import DarkMode from '@public/static/icons/dark_mode.svg';
+import LightMode from '@public/static/icons/wb_sunny.svg';
+import UserList from '@public/static/icons/ic-user-list.svg'
+import AdminIcon from '@public/static/icons/ic-user-shield.svg'
+import IncomeIcon from '@public/static/icons/ic-briefcase-dollar.svg'
 import { MdOutlineClear } from 'react-icons/md';
 
 import Image from 'next/image';
@@ -46,32 +49,38 @@ const navData = [
       {
         name: 'Dashboard',
         slug: 'dashboard',
-        path: '/dashboard',
+        path: '/admin/dashboard',
         icon: <DashboardIcon />,
       },
       {
         name: 'Task',
         slug: 'task',
-        path: '/dashboard/task',
+        path: '/admin/task',
         icon: <TaskIcon />,
       },
       {
         name: 'All Submissions',
         slug: 'submissions',
-        path: '/dashboard/submissions',
+        path: '/admin/submitted-task',
         icon: <BagIcon />,
       },
       {
-        name: 'Referrals',
-        slug: 'referrals',
-        path: '/dashboard/referrals',
-        icon: <ChartIcon />,
+        name: 'General Users',
+        slug: 'general-users',
+        path: '/admin/general-users',
+        icon: <UserList />,
       },
       {
-        name: 'Transaction',
-        slug: 'transaction',
-        path: '/dashboard/transaction',
-        icon: <CardIcon />,
+        name: 'Admins',
+        slug: 'admins',
+        path: '/admin/admins',
+        icon: <AdminIcon />,
+      },
+      {
+        name: 'Income & Withdraw',
+        slug: 'income-withdraw',
+        path: '/admin/income-withdraw',
+        icon: <IncomeIcon />,
       },
     ],
   },
@@ -79,15 +88,9 @@ const navData = [
     title: 'Assistant',
     data: [
       {
-        name: 'Support',
-        slug: 'support',
-        path: '/dashboard/support',
-        icon: <SupportIcon />,
-      },
-      {
         name: 'Settings',
         slug: 'settings',
-        path: '/dashboard/settings',
+        path: '/admin/settings',
         icon: <SettingIcon />,
       },
     ],
@@ -194,7 +197,7 @@ export default function DashboardSidebar({ ...props }) {
                 spacing={1}
                 mt={6}>
                 <Typography
-                  variant='body1'
+                  variant='body2'
                   color='text.secondary'>
                   {item.title}
                 </Typography>
@@ -216,16 +219,16 @@ export default function DashboardSidebar({ ...props }) {
                           },
                           ...(updateActive(text.slug) &&
                             initial && {
-                              borderLeft: (theme) =>
-                                '3px solid' + theme.palette.primary.main,
+                            borderLeft: (theme) =>
+                              '3px solid' + theme.palette.primary.main,
+                            color: 'primary.main',
+                            bgcolor: (theme) =>
+                              alpha(theme.palette.primary.main, 0.2),
+                            pl: 4,
+                            svg: {
                               color: 'primary.main',
-                              bgcolor: (theme) =>
-                                alpha(theme.palette.primary.main, 0.2),
-                              pl: 4,
-                              svg: {
-                                color: 'primary.main',
-                              },
-                            }),
+                            },
+                          }),
                           ':hover': {
                             borderLeft: (theme) =>
                               '3px solid' + theme.palette.primary.main,
@@ -245,7 +248,7 @@ export default function DashboardSidebar({ ...props }) {
                           {text.icon}
                         </ListItemIcon>
                         <Typography
-                          variant='body1'
+                          variant='body2'
                           fontWeight={updateActive(text.slug) ? 600 : 400}>
                           {text.name}
                         </Typography>
