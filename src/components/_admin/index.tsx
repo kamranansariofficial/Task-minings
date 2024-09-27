@@ -80,9 +80,9 @@ function AdminDashboard() {
     setContextMenu(
       contextMenu === null
         ? {
-            mouseX: event.clientX + 2,
-            mouseY: event.clientY - 6,
-          }
+          mouseX: event.clientX + 2,
+          mouseY: event.clientY - 6,
+        }
         : null
     );
   };
@@ -192,12 +192,12 @@ function AdminDashboard() {
                   series={[
                     {
                       type: 'line',
-                      name: '$',
+                      name: 'Current Month',
                       data: chartData.salesReport.series1,
                     },
                     {
                       type: 'line',
-                      name: '$',
+                      name: 'Last Month',
                       data: chartData.salesReport.series2,
                     },
                   ]}
@@ -212,7 +212,6 @@ function AdminDashboard() {
                           offsetY: 5,
                         },
                       },
-
                       grid: {
                         show: true,
                         strokeDashArray: 5,
