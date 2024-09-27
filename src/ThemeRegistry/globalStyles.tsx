@@ -66,7 +66,11 @@ export default function GlobalStyles() {
             }
           }
         },
-
+        '.react-svg': {
+          div: {
+            display: 'flex',
+          }
+        }
       }}
     />
   );

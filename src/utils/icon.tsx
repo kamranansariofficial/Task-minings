@@ -1,20 +1,26 @@
+import React from "react";
+import { ReactSVG } from "react-svg";
 
-const importAll = (requireContext: any) => {
-  const icons: { [key: string]: React.FC<React.SVGProps<SVGSVGElement>> } = {};
-  requireContext.keys().forEach((key: string) => {
-    const iconName = key.replace('./', '').replace('.svg', '');
-    icons[iconName] = requireContext(key).default;
-  });
-  return icons;
-};
+function Icon({ ...props }) {
+  const { name, className, color, height, width, ...rest } = props;
+  const prefix = "/static/icons/";
+  return name && <ReactSVG  {...rest}
+    {...(color || height || width) ? {
+      beforeInjection: ((svg) => {
+        if (color) {
+          // Modify the first `g` element within the SVG.
+          const firstGElement = svg.querySelectorAll('path, rect');
+          firstGElement.forEach(path => path.setAttribute('fill', color as string))
+        }
 
-const svgs = importAll((require as any)?.context('@public/static/icons', false, /\.svg$/));
-// make component to load icon
-const Icon = ({ name, className = "", ...props }: { name: string } & React.SVGProps<SVGSVGElement>) => {
-  const Component = svgs[name];
-  return Component ? <Component {...props} className={
-    (`svg-icon ${className}`).trim()
-  }
-  /> : null;
-};
+        if (height && width) {
+          svg.setAttribute('height', `${height}px`);
+          svg.setAttribute('width', `${width}px`);
+        }
+      })
+    } : {}}
+    className={`react-svg ${className ? className : ''}`}
+    src={`${prefix}${name}.svg`} />;
+}
+
 export default Icon;
