@@ -125,7 +125,6 @@ export default function DashboardSidebar({ ...props }) {
       return url.includes(slug);
     }
   };
-
   const drawer = (
     <Box
       py={{ xs: 1, md: 2 }}
