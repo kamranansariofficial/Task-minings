@@ -9,9 +9,11 @@ import LogOutIcon from '../../../public/static/icons/logout-04.svg';
 import UserIcon from '../../../public/static/icons/user.svg';
 import AvatarIcon from '../../../public/static/avatar.png';
 import Image from 'next/image';
+import { useRouter } from 'next-nprogress-bar';
 
 export default function UserPopover() {
   const theme = useTheme();
+  const router = useRouter();
   const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(
     null
   );
@@ -117,6 +119,7 @@ export default function UserPopover() {
             variant='text'
             color='inherit'
             startIcon={<UserIcon />}
+            onClick={() => router.push('/dashboard/settings/profile')}
             sx={{
               justifyContent: 'start',
               color: 'text.secondary',

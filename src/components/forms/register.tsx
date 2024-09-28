@@ -86,22 +86,7 @@ export default function RegisterForm() {
       }, 5000); // 5 seconds delay
     },
   });
-  // const { mutate } = useMutation(api.register, {
-  //   onSuccess: async (data: any) => {
-  //     dispatch(setLogin(data.user));
-  //     await createCookies('token', data.token);
-  //     toast.success('OTP sent to your email' + ' ' + data.user.firstName);
-  //     setloading(false);
-  //     router.push(
-  //       redirect ? `/auth/verify-otp?redirect=${redirect}` : `/auth/verify-otp`
-  //     );
-  //   },
-  //   onError: (err: any) => {
-  //     const message = JSON.stringify(err.response.data.message);
-  //     toast.error(message ? JSON.parse(message) : 'Something went wrong!');
-  //     setloading(false);
-  //   },
-  // });
+
   const { errors, touched, handleSubmit, values, getFieldProps } = formik;
   return (
     <FormikProvider value={formik}>
