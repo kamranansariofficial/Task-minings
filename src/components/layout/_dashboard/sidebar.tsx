@@ -29,9 +29,8 @@ import LightLogo from '@public/static/logo-light.png';
 import DarkLogo from '@public/static/logo-dark.png';
 import DarkMode from '@public/static/icons/dark_mode.svg';
 import LightMode from '@public/static/icons/wb_sunny.svg';
-import UserList from '@public/static/icons/ic-user-list.svg';
-import AdminIcon from '@public/static/icons/ic-user-shield.svg';
-import IncomeIcon from '@public/static/icons/ic-briefcase-dollar.svg';
+import WalletIcon from '@public/static/icons/wallet-02.svg';
+import WithdrawIcon from '@public/static/icons/bitcoin-withdraw.svg';
 import { MdOutlineClear } from 'react-icons/md';
 
 import Image from 'next/image';
@@ -77,11 +76,18 @@ const navData = [
         path: '/dashboard/transaction',
         icon: <CardIcon />,
       },
+
       {
-        name: 'Income & Withdraw',
-        slug: 'income-withdraw',
-        path: '/admin/income-withdraw',
-        icon: <IncomeIcon />,
+        name: 'Wallet Only',
+        slug: 'add-wallet',
+        path: '/dashboard/add-wallet',
+        icon: <WalletIcon />,
+      },
+      {
+        name: 'Withdrawal Only',
+        slug: 'withdrawal-only',
+        path: '/dashboard/withdrawal-only',
+        icon: <WithdrawIcon />,
       },
     ],
   },
@@ -217,6 +223,7 @@ export default function UserDashboardSidebar({ ...props }) {
                         onClick={() => router.push(text.path)}
                         sx={{
                           minHeight: 52,
+                          mb: 0.1,
                           borderRadius: 1,
                           transition: 'ease-in-out .5s',
                           color: 'text.secondary',
