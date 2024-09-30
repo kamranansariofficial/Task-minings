@@ -8,7 +8,7 @@ const Providers = () => {
   return (
     <ProgressBar
       height='3px'
-      color={theme.palette.primary.main}
+      color='primary'
       options={{ showSpinner: false }}
       shallowRouting
     />

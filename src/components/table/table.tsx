@@ -21,6 +21,7 @@ import TableHead from './tableHead';
 import { PiSlidersHorizontalLight } from 'react-icons/pi';
 
 import Search from '../search';
+import WithdrawalTimeline from '../_dashboard/withdrawal-only/withdrawalTimeline';
 
 // Define interfaces for your props
 interface FilterItem {
@@ -48,6 +49,7 @@ interface CustomTableProps {
   filters?: FilterItem[];
   [key: string]: any;
   isFilter?: any;
+  isTimeline?: any;
 }
 const CustomTable: React.FC<CustomTableProps> = (props) => {
   const {
@@ -64,6 +66,7 @@ const CustomTable: React.FC<CustomTableProps> = (props) => {
     isSearch,
     filters,
     isFilter,
+    isTimeline,
     ...rest
   } = props;
 
@@ -124,6 +127,7 @@ const CustomTable: React.FC<CustomTableProps> = (props) => {
           sx={{
             p: 2,
           }}>
+          {isTimeline && <WithdrawalTimeline />}
           {(heading || isSearch || filters || isFilter) && (
             <Stack
               sx={{

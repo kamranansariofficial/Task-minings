@@ -6,10 +6,10 @@ import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import { useSelector, useDispatch, darkMode, settingSlice } from '@/lib/redux';
 // icons
-import DarkMode from '../../../../public/static/icons/dark_mode.svg';
-import LightMode from '../../../../public/static/icons/wb_sunny.svg';
-import Bitcoin from '../../../../public/static/icons/bitcoin-cpu.svg';
-import NoteIcon from '../../../../public/static/icons/notification-alert.svg';
+import DarkMode from '@public/static/icons/dark_mode.svg';
+import LightMode from '@public/static/icons/wb_sunny.svg';
+import Bitcoin from '@public/static/icons/bitcoin-cpu.svg';
+import NoteIcon from '@public/static/icons/notification-alert.svg';
 import { MdOutlineVisibility } from 'react-icons/md';
 import { MdOutlineVisibilityOff } from 'react-icons/md';
 import { FaBell } from 'react-icons/fa';
@@ -20,9 +20,11 @@ import { Box, Card, Stack, useMediaQuery, useTheme } from '@mui/material';
 import LocaleSwitcher from '@/components/locale-switcher';
 import UserPopover from '@/components/popover/userPopover';
 import { usePathname } from 'next/navigation';
+import { useRouter } from 'next-nprogress-bar';
 
 export default function UserDashboardAppbar({ ...props }) {
   const pathname = usePathname();
+  const router = useRouter();
   const { drawerWidth, handleDrawerToggle } = props;
   const isDarkMode = useSelector(darkMode);
   const dispatch = useDispatch();
@@ -118,12 +120,14 @@ export default function UserDashboardAppbar({ ...props }) {
             <IconButton
               size='small'
               color='inherit'
+              onClick={() => router.push('/dashboard/notification')}
               sx={{
                 display: { xs: 'flex', md: 'none' },
               }}>
               <FaBell />
             </IconButton>
             <IconButton
+              onClick={() => router.push('/dashboard/notification')}
               sx={{
                 display: { xs: 'none', md: 'flex' },
                 color: 'text.primary',
