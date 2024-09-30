@@ -21,7 +21,11 @@ export default function WalletList() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   return (
-    <Card>
+    <Card
+      sx={{
+        position: 'relative',
+        overflow: 'hidden',
+      }}>
       <CardContent>
         <Typography
           variant='h5'
@@ -30,19 +34,23 @@ export default function WalletList() {
         </Typography>
         <Box
           sx={{
+            position: 'relative',
             borderRadius: 2,
             border: '1px solid ' + theme.palette.divider,
             p: 1,
             mb: 2,
+            width: '100%',
           }}>
           <Stack
             direction={{ xs: 'column', md: 'row' }}
             alignItems={{ xs: 'start', md: 'center' }}
             justifyContent='space-between'
-            spacing={1}>
+            spacing={1}
+            width='100%'>
             <Stack
               direction='row'
               alignItems='center'
+              width='100%'
               spacing={2}>
               <Box
                 sx={{
@@ -58,9 +66,13 @@ export default function WalletList() {
                 }}>
                 <FaEthereum size={isMobile ? 24 : 36} />
               </Box>
-              <Stack spacing={1}>
-                <Typography variant='h6'>
-                  fgfhdhfjshdkdkl[w884s[dkishhsg
+              <Stack
+                spacing={1}
+                width='100%'>
+                <Typography
+                  variant='h6'
+                  component='h6'>
+                  fgfhdhfjshdkdkl[w884 s[d kish hsg
                 </Typography>
                 <Typography
                   variant='body2'
@@ -95,6 +107,7 @@ export default function WalletList() {
         </Box>
         <Box
           sx={{
+            position: 'relative',
             borderRadius: 2,
             border: '1px solid ' + theme.palette.divider,
             p: 1,
@@ -124,7 +137,7 @@ export default function WalletList() {
               </Box>
               <Stack spacing={1}>
                 <Typography variant='h6'>
-                  fgfhdhfjshdkdkl[w884s[dkishhsg
+                  fgfhdhfjshdkdkl[w884 s[dk ish hsg
                 </Typography>
                 <Typography
                   variant='body2'

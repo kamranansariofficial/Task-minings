@@ -7,6 +7,7 @@ import { Card, CardHeader, Box, Skeleton, useTheme } from '@mui/material';
 // components
 import BaseOptionChart from './BaseOptionChart';
 import { TbCurrencyTugrik } from 'react-icons/tb';
+import ChartStyled from './chartStyle';
 
 export default function Income({ ...props }) {
   const { data, isLoading } = props;
@@ -33,6 +34,13 @@ export default function Income({ ...props }) {
         'Nov',
         'Dec',
       ],
+    },
+    markers: {
+      customHTML: () => {
+        return (document.createElement(
+          'div'
+        ).innerHTML = `<div class="apexcharts-marker custom-marker"><span></span></div>`);
+      },
     },
     tooltip: {
       theme: 'light',
@@ -121,17 +129,19 @@ export default function Income({ ...props }) {
         <Box
           sx={{ mt: 3, mx: 3 }}
           dir='ltr'>
-          <ReactApexChart
-            type='area'
-            series={[
-              {
-                name: '$',
-                data,
-              },
-            ]}
-            options={chartOptions as any}
-            height={260}
-          />
+          <ChartStyled>
+            <ReactApexChart
+              type='area'
+              series={[
+                {
+                  name: 'Income',
+                  data: data, // Assuming this is income data
+                },
+              ]}
+              options={chartOptions as any}
+              height={260}
+            />
+          </ChartStyled>
         </Box>
       )}
     </Card>

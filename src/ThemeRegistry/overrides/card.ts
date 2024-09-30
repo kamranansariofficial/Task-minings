@@ -24,6 +24,9 @@ export default function Card(theme: any) {
       styleOverrides: {
         root: {
           padding: theme.spacing(3, 3, 0),
+          [theme.breakpoints.down('md')]: {
+            padding: theme.spacing(2, 2, 0), // Reduced padding for medium screens
+          },
         },
       },
     },
@@ -31,6 +34,9 @@ export default function Card(theme: any) {
       styleOverrides: {
         root: {
           padding: theme.spacing(3),
+          [theme.breakpoints.down('md')]: {
+            padding: theme.spacing(2), // Reduced padding for medium screens
+          },
         },
       },
     },
