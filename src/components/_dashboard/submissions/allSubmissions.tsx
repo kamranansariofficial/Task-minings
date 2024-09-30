@@ -38,6 +38,7 @@ export default function AllSubmissionsList() {
           headData={TABLE_HEAD}
           data={data}
           isLoading={false}
+          isCount
           heading={'All Submissions'}
           row={AllSubmissionsRow}
         />
@@ -57,7 +58,7 @@ export default function AllSubmissionsList() {
               <Stack
                 direction='row'
                 alignItems='center'
-                spacing={1}>
+                spacing={2}>
                 <Box sx={{ flex: 1, '.MuiInputBase-root': { width: 1 } }}>
                   <Search />
                 </Box>

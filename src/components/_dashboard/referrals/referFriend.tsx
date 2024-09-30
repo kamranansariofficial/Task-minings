@@ -8,18 +8,20 @@ import {
   Button,
   useTheme,
   Stack,
+  useMediaQuery,
+  IconButton,
 } from '@mui/material';
 // icon
-import { AiOutlineLink } from 'react-icons/ai';
 import { TbLink } from 'react-icons/tb';
 
 export default function ReferFriend() {
   const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
   return (
     <Card>
       <CardContent>
-        <Stack spacing={3}>
+        <Stack spacing={{ xs: 1, md: 3 }}>
           <Typography
             variant='h4'
             gutterBottom>
@@ -37,18 +39,24 @@ export default function ReferFriend() {
             slotProps={{
               input: {
                 endAdornment: (
-                  <InputAdornment position='end'>
-                    <Button
-                      size='large'
-                      variant='contained'
-                      color='primary'
-                      sx={{
-                        borderRadius: '0px 8px  8px 0px',
-                        px: 5,
-                      }}
-                      startIcon={<TbLink />}>
-                      Copy
-                    </Button>
+                  <InputAdornment position={isMobile ? 'start' : 'end'}>
+                    {isMobile ? (
+                      <IconButton color='primary'>
+                        <TbLink size={24} />
+                      </IconButton>
+                    ) : (
+                      <Button
+                        size='large'
+                        variant='contained'
+                        color='primary'
+                        sx={{
+                          borderRadius: '0px 8px  8px 0px',
+                          px: 5,
+                        }}
+                        startIcon={<TbLink />}>
+                        Copy
+                      </Button>
+                    )}
                   </InputAdornment>
                 ),
               },

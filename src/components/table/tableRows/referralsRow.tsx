@@ -8,6 +8,7 @@ import {
   Typography,
   IconButton,
   useTheme,
+  useMediaQuery,
 } from '@mui/material';
 // icons
 import BitCoin from '../../../../public/static/icons/bitcoin-cpu-1.svg';
@@ -16,6 +17,7 @@ import { LuEye } from 'react-icons/lu';
 export default function ReferralsRow({ ...props }) {
   const { isLoading, row } = props;
   const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   return (
     <TableRow
       hover
@@ -59,19 +61,21 @@ export default function ReferralsRow({ ...props }) {
           </Typography>
         )}
       </TableCell>
-      <TableCell align='right'>
-        {isLoading ? (
-          <Skeleton
-            variant='circular'
-            width={34}
-            height={34}
-          />
-        ) : (
-          <IconButton>
-            <LuEye size={18} />
-          </IconButton>
-        )}
-      </TableCell>
+      {!isMobile && (
+        <TableCell align='right'>
+          {isLoading ? (
+            <Skeleton
+              variant='circular'
+              width={34}
+              height={34}
+            />
+          ) : (
+            <IconButton>
+              <LuEye size={18} />
+            </IconButton>
+          )}
+        </TableCell>
+      )}
     </TableRow>
   );
 }

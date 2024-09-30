@@ -24,7 +24,7 @@ export default function MainDashboard() {
         spacing={{ xs: 2, md: 3 }}>
         <Grid
           item
-          xs={12}
+          xs={6}
           md={6}>
           <DashboardCard
             title='Available Tasks'
@@ -34,7 +34,7 @@ export default function MainDashboard() {
         </Grid>
         <Grid
           item
-          xs={12}
+          xs={6}
           md={6}>
           <DashboardCard
             title='Tasks Completed'
@@ -44,7 +44,7 @@ export default function MainDashboard() {
         </Grid>{' '}
         <Grid
           item
-          xs={12}
+          xs={4}
           md={4}>
           <DashboardCard
             title='Pending Verifications'
@@ -54,7 +54,7 @@ export default function MainDashboard() {
         </Grid>{' '}
         <Grid
           item
-          xs={12}
+          xs={4}
           md={4}>
           <DashboardCard
             title='Rewards Earned'
@@ -65,7 +65,7 @@ export default function MainDashboard() {
         </Grid>{' '}
         <Grid
           item
-          xs={12}
+          xs={4}
           md={4}>
           <DashboardCard
             title='Total Withdrawal'

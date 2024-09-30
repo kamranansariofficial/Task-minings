@@ -50,6 +50,7 @@ interface CustomTableProps {
   [key: string]: any;
   isFilter?: any;
   isTimeline?: any;
+  isCount?: any;
 }
 const CustomTable: React.FC<CustomTableProps> = (props) => {
   const {
@@ -67,6 +68,7 @@ const CustomTable: React.FC<CustomTableProps> = (props) => {
     filters,
     isFilter,
     isTimeline,
+    isCount,
     ...rest
   } = props;
 
@@ -220,7 +222,7 @@ const CustomTable: React.FC<CustomTableProps> = (props) => {
               </Table>
             </TableContainer>
           )}
-          {!isLoading && data?.count && (
+          {!isLoading && !isCount && data?.count && (
             <Stack
               mt={2}
               pr={2}>

@@ -1,4 +1,3 @@
-
 import React from 'react';
 // mui
 import {
@@ -27,6 +26,7 @@ export default function DashboardCard({ ...props }) {
           <Stack spacing={0.2}>
             <Typography
               variant='subtitle2'
+              fontSize={{ xs: 12, md: 16 }}
               color='text.secondary'>
               {title}
             </Typography>

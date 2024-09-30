@@ -61,7 +61,7 @@ const navData = [
       {
         name: 'All Submissions',
         slug: 'submissions',
-        path: '/dashboard/subnissions',
+        path: '/dashboard/submissions',
         icon: <BagIcon />,
       },
       {

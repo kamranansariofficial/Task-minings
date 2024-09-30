@@ -33,101 +33,113 @@ export default function ReferralsMain() {
           item
           xs={12}
           md={4}>
-          <Stack spacing={3}>
-            <Card
-              sx={{
-                height: { xs: 200, md: 400 },
-                position: 'relative',
-                p: 2.5,
-              }}>
-              <Image
-                src={
-                  theme.palette.mode === 'light'
-                    ? RewardImageLight
-                    : RewardImageDark
-                }
-                priority
-                alt='reward-img'
-                fill
-                objectFit='cover'
-              />
-              <Stack
-                spacing={3}
-                justifyContent='space-between'
+          <Grid
+            container
+            spacing={{ xs: 2, md: 3 }}>
+            <Grid
+              item
+              xs={6}
+              md={12}>
+              <Card
                 sx={{
-                  height: '100%',
-                  zIndex: 2,
+                  height: { xs: 200, md: 400 },
                   position: 'relative',
+                  p: 2.5,
                 }}>
-                <Typography variant='h5'>Referral Rewards</Typography>
-                <Box
+                <Image
+                  src={
+                    theme.palette.mode === 'light'
+                      ? RewardImageLight
+                      : RewardImageDark
+                  }
+                  priority
+                  alt='reward-img'
+                  fill
+                  objectFit='cover'
+                />
+                <Stack
+                  spacing={3}
+                  justifyContent='space-between'
                   sx={{
-                    maxWidth: { xs: 100, md: 165 },
-                    minHeight: { xs: 36, md: 58 },
-                    borderRadius: 3,
-                    border: '1px solid' + theme.palette.divider,
-                    fontSize: { xs: 18, md: 32 },
-                    fontWeight: 500,
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    gap: 1.5,
-                    color: 'primary.main',
-                    svg: {
-                      fontSize: { xs: 18, md: 32 },
-                    },
+                    height: '100%',
+                    zIndex: 2,
+                    position: 'relative',
                   }}>
-                  <Icon name='usdt' />
-                  5.00
-                </Box>
-              </Stack>
-            </Card>
-            <Card
-              sx={{
-                height: { xs: 200, md: 400 },
-                position: 'relative',
-                p: 2.5,
-              }}>
-              <Image
-                src={
-                  theme.palette.mode === 'light' ? SpeakerLight : SpeakerDark
-                }
-                priority
-                alt='reward-img'
-                fill
-                objectFit='cover'
-              />
-              <Stack
-                spacing={3}
-                justifyContent='space-between'
+                  <Typography variant='h5'>Referral Rewards</Typography>
+                  <Box
+                    sx={{
+                      maxWidth: { xs: 100, md: 165 },
+                      minHeight: { xs: 36, md: 58 },
+                      borderRadius: 3,
+                      border: '1px solid' + theme.palette.divider,
+                      fontSize: { xs: 18, md: 32 },
+                      fontWeight: 500,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      gap: 1.5,
+                      color: 'primary.main',
+                      svg: {
+                        fontSize: { xs: 18, md: 32 },
+                      },
+                    }}>
+                    <Icon name='usdt' />
+                    5.00
+                  </Box>
+                </Stack>
+              </Card>
+            </Grid>
+            <Grid
+              item
+              xs={6}
+              md={12}>
+              <Card
                 sx={{
-                  height: '100%',
-                  zIndex: 2,
+                  height: { xs: 200, md: 400 },
                   position: 'relative',
+                  p: 2.5,
                 }}>
-                <Typography variant='h5'>List of Referrals</Typography>
-                <Box
+                <Image
+                  src={
+                    theme.palette.mode === 'light' ? SpeakerLight : SpeakerDark
+                  }
+                  priority
+                  alt='reward-img'
+                  fill
+                  objectFit='cover'
+                />
+                <Stack
+                  spacing={3}
+                  justifyContent='space-between'
                   sx={{
-                    maxWidth: { xs: 90, md: 115 },
-                    minHeight: { xs: 36, md: 58 },
-                    borderRadius: 3,
-                    border: '1px solid' + theme.palette.divider,
-                    fontSize: { xs: 18, md: 32 },
-                    fontWeight: 500,
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    gap: 1.5,
-                    color: 'primary.main',
-                    svg: {
-                      fontSize: { xs: 18, md: 32 },
-                    },
+                    height: '100%',
+                    zIndex: 2,
+                    position: 'relative',
                   }}>
-                  15
-                </Box>
-              </Stack>
-            </Card>
-          </Stack>
+                  <Typography variant='h5'>List of Referrals</Typography>
+                  <Box
+                    sx={{
+                      maxWidth: { xs: 90, md: 115 },
+                      minHeight: { xs: 36, md: 58 },
+                      borderRadius: 3,
+                      border: '1px solid' + theme.palette.divider,
+                      fontSize: { xs: 18, md: 32 },
+                      fontWeight: 500,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      gap: 1.5,
+                      color: 'primary.main',
+                      svg: {
+                        fontSize: { xs: 18, md: 32 },
+                      },
+                    }}>
+                    15
+                  </Box>
+                </Stack>
+              </Card>
+            </Grid>
+          </Grid>
         </Grid>
       </Grid>
     </Box>
