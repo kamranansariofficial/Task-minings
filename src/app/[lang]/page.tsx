@@ -7,5 +7,5 @@ export default async function IndexPage({
 }: {
   params: { lang: Locale };
 }) {
-  return <Container fixed></Container>;
+  return <Container fixed>sd</Container>;
 }
