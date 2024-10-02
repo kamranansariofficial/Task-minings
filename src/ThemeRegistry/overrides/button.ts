@@ -13,7 +13,7 @@ export default function Button(theme: any) {
             height: 40,
           },
           '&.MuiButton-sizeSmall': {
-            height: 32,
+            height: 36,
           },
         },
         sizeLarge: {

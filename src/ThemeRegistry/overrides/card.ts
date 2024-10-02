@@ -1,4 +1,9 @@
+import { darkMode } from '@/lib/redux';
+import { useSelector } from 'react-redux';
+
 export default function Card(theme: any) {
+  const isDarkMode = useSelector(darkMode);
+
   return {
     MuiCard: {
       styleOverrides: {
@@ -9,7 +14,9 @@ export default function Card(theme: any) {
           transition: 'all ease-in-out 0.3s',
           background: theme.palette.background.paper,
           borderRadius: theme.spacing(2),
-          boxShadow: '2px 4px 26.8px 0px #3F80FF14',
+          boxShadow: isDarkMode
+            ? '2px 4px 26.8px 0px #1B1B1B33'
+            : '2px 4px 26.8px 0px #3F80FF14',
         },
       },
     },
