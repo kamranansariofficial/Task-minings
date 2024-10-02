@@ -81,7 +81,7 @@ export default function SubmissionsRow({ ...props }) {
           <Skeleton variant='text' />
         ) : (
           <Label
-            variant={theme.palette.mode === 'light' ? 'ghost' : 'filled'}
+            variant={theme.palette.mode === 'light' ? 'ghost' : 'ghost'}
             color={
               (row?.status === 'approved' && 'primary') ||
               (row?.status === 'rejected' && 'secondary') ||
