@@ -1,10 +1,10 @@
-import { NextResponse } from "next/server";
-import type { NextRequest } from "next/server";
+import { NextResponse } from 'next/server';
+import type { NextRequest } from 'next/server';
 
-import { i18n } from "../i18n-config";
+import { i18n } from '../i18n-config';
 
-import { match as matchLocale } from "@formatjs/intl-localematcher";
-import Negotiator from "negotiator";
+import { match as matchLocale } from '@formatjs/intl-localematcher';
+import Negotiator from 'negotiator';
 
 function getLocale(request: NextRequest): string | undefined {
   // Negotiator expects plain object so we need to transform headers
@@ -25,7 +25,7 @@ function getLocale(request: NextRequest): string | undefined {
 }
 
 export function middleware(request: NextRequest) {
-  const pathname = request.nextUrl.pathname;
+  // const pathname = request.nextUrl.pathname;
 
   // // `/_next/` and `/api/` are ignored by the watcher, but we need to ignore files in `public` manually.
   // // If you have one
@@ -40,33 +40,33 @@ export function middleware(request: NextRequest) {
 
   // Check if there is any supported locale in the pathname
   // Check if the current path is "/" and redirect to "/dashboard"
-  const supportedLocales = i18n.locales.map((locale) => `/${locale}`);
-  if (supportedLocales.includes(pathname)) {
-    const locale = pathname.split("/")[1];
-    return NextResponse.redirect(new URL(`/${locale}/dashboard`, request.url));
-  }
+  // const supportedLocales = i18n.locales.map((locale) => `/${locale}`);
+  // if (supportedLocales.includes(pathname)) {
+  //   const locale = pathname.split("/")[1];
+  //   return NextResponse.redirect(new URL(`/${locale}/dashboard`, request.url));
+  // }
 
-  const pathnameIsMissingLocale = i18n.locales.every(
-    (locale) => !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`
-  );
+  // const pathnameIsMissingLocale = i18n.locales.every(
+  //   (locale) => !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`
+  // );
 
-  // Redirect if there is no locale
-  if (pathnameIsMissingLocale) {
-    const locale = getLocale(request);
+  // // Redirect if there is no locale
+  // if (pathnameIsMissingLocale) {
+  //   const locale = getLocale(request);
 
-    // e.g. incoming request is /products
-    // The new URL is now /en-US/products
-    return NextResponse.redirect(
-      new URL(
-        `/${locale}${pathname.startsWith("/") ? "" : "/"}${pathname}`,
-        request.url
-      )
-    );
-  }
+  //   // e.g. incoming request is /products
+  //   // The new URL is now /en-US/products
+  //   return NextResponse.redirect(
+  //     new URL(
+  //       `/${locale}${pathname.startsWith("/") ? "" : "/"}${pathname}`,
+  //       request.url
+  //     )
+  //   );
+  // }
   return NextResponse.next();
 }
 
 export const config = {
   // Matcher ignoring `/_next/` and `/api/`
-  matcher: ["/((?!api|_next/static|_next/image|favicon.ico|static/icons).*)"],
+  matcher: ['/((?!api|_next/static|_next/image|favicon.ico|static/icons).*)'],
 };

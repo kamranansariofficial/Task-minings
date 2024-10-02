@@ -123,7 +123,6 @@ export default function UserDashboardSidebar({ ...props }) {
 
   const isDarkMode = useSelector(darkMode);
   const dispatch = useDispatch();
-  const [active, setActive] = React.useState('');
   const [initial, setInitial] = React.useState(false);
   React.useEffect(() => {
     setInitial(true);
