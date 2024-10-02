@@ -37,7 +37,7 @@ export default function Hero() {
           position: 'absolute',
           top: 0,
           right: 0,
-          background: 'url(/static/bgAfter.png)',
+          backgroundImage: 'url(/static/bgAfter.png)', // Corrected path
           height: { xs: 250, md: 450 },
           width: { xs: 250, md: 450 },
           backgroundPosition: 'top center',

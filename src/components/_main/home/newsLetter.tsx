@@ -24,7 +24,7 @@ export default function NewsLetter() {
     <Box
       sx={{
         position: 'relative',
-        py: 6,
+        py: { xs: 2, md: 6 },
         overflow: 'hidden',
         '::before': {
           content: "''",

@@ -33,13 +33,13 @@ export default function EarnRewards() {
     <Box
       sx={{
         position: 'relative',
-        py: 6,
+        py: { xs: 2, md: 6 },
         overflow: 'hidden',
         '::before': {
           content: "''",
           position: 'absolute',
-          top: '50%',
-          transform: 'translate(-50%,-50%)',
+          top: { xs: '20%', md: '50%' },
+          transform: { xs: 'unset', md: 'translate(-50%,-50%)' },
           right: 0,
           background: 'url(/static/bgCenter.png)',
           height: { xs: 250, md: 450 },
@@ -82,8 +82,8 @@ export default function EarnRewards() {
           '::after': {
             content: "''",
             position: 'absolute',
-            bottom: '-10%',
-            left: '40%',
+            bottom: { xs: '0%', md: '-10%' },
+            left: { xs: '60%', md: '40%' },
             transform: 'translateX(-50%)',
             background: 'url(/static/bgCenter.png)',
             height: { xs: 250, md: 450 },
@@ -102,6 +102,7 @@ export default function EarnRewards() {
             }}>
             <Grid
               container
+              direction={{ xs: 'column-reverse', md: 'row' }}
               spacing={{ xs: 2, md: 6 }}>
               <Grid
                 item
