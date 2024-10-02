@@ -48,7 +48,7 @@ export default function MainFaqs() {
     <Box
       sx={{
         position: 'relative',
-        py: 6,
+        py: { xs: 2, md: 6 },
         overflow: 'hidden',
         '::before': {
           content: "''",
@@ -97,7 +97,7 @@ export default function MainFaqs() {
           '::after': {
             content: "''",
             position: 'absolute',
-            top: '-10%',
+            top: { xs: '-5%', md: '-10%' },
             left: '40%',
             transform: 'translateX(-50%)',
             background: 'url(/static/bgCenter.png)',
